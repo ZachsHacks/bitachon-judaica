@@ -29,9 +29,12 @@ http.createServer((req, res) => {
         return res.end("<h1>Not found</h1>");
       }
       const ext = path.extname(filePath).toLowerCase();
+      // HTML/CSS/JS always revalidate so edits show immediately; cache images.
+      const cache = (ext === ".html" || ext === ".css" || ext === ".js")
+        ? "no-cache" : "public, max-age=86400";
       res.writeHead(200, {
         "Content-Type": TYPES[ext] || "application/octet-stream",
-        "Cache-Control": "public, max-age=300",
+        "Cache-Control": cache,
       });
       res.end(data);
     });
