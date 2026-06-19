@@ -14,7 +14,7 @@ a{color:inherit;text-decoration:none}
 .logo{line-height:0}
 .logo-img{height:74px;width:auto;display:block}
 .brand{display:flex;align-items:center;gap:16px}
-.brand-text{font-family:"Cinzel",serif;font-weight:600;font-size:25px;letter-spacing:.07em;text-transform:uppercase;color:var(--navy);line-height:1;white-space:nowrap}
+.brand-text{font-family:"Cinzel",serif;font-weight:600;font-size:26px;letter-spacing:.05em;text-transform:uppercase;color:var(--navy);line-height:1;white-space:nowrap}
 nav ul{display:flex;gap:38px;list-style:none;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:#5a626d}
 nav a:hover{color:var(--navy)}
 .icons{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--navy)}
