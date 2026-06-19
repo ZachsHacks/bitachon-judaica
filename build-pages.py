@@ -20,7 +20,7 @@ HEAD = """<!doctype html>
 <body>
 <header>
   <div class="topbar">
-    <a href="/" class="logo brand"><img class="logo-img" src="/assets/logo.png" alt="Bitachon Judaica"><span class="brand-text"><span class="b1">Bitachon</span><span class="b2">Judaica</span></span></a>
+    <a href="/" class="logo brand"><img class="logo-img" src="/assets/logo.png" alt="Bitachon Judaica"><span class="brand-text">Bitachon Judaica</span></a>
     <nav><ul>
       <li><a href="/shop.html">Shop</a></li>
       <li><a href="/mezuzahs.html">Mezuzahs</a></li>
