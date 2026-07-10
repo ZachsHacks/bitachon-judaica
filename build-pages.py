@@ -70,9 +70,11 @@ def grid(category):
 def band(ey, h2, href, label):
     return f'<div class="band"><div class="wrap"><span class="ey">{ey}</span><h2>{h2}</h2><a href="{href}">{label}</a></div></div>'
 
-# ---- Shop (all products) ----
+# ---- Shop (all products + dynamic category nav) ----
 shop = (hero("The Collections", "Shop", "Handcrafted Judaica, made one piece at a time.")
+        + '<section style="padding-bottom:0"><div class="wrap"><div id="catnav" class="catnav"></div></div></section>'
         + grid(None)
+        + '<script>BJStore.renderCats("catnav")</script>'
         + band("For schools &amp; groups", "Bulk &amp; custom orders", "/bulk.html", "Request a quote"))
 page("shop.html", "Shop", shop)
 
@@ -96,17 +98,20 @@ category = ('<div class="page-hero"><span class="ey">Collection</span>'
             '<script>BJStore.renderFromQuery("products","cat-title")</script>')
 page("category.html", "Shop", category)
 
-# ---- About ----
-about = hero("Our Story", "It began on my mirror") + """
+# ---- About (headline + paragraphs come from editable config) ----
+about = """
+<div class="page-hero"><span class="ey">Our Story</span><h1 id="about-quote">It began on my mirror</h1><div class="divider"></div></div>
 <div class="prose">
-  <p>Every morning I would wake up and write a few words where I would see them first thing: don't worry, Hashem knows what to do. Those little reminders carried me through hard mornings, and slowly they became something I wanted to share.</p>
   <img src="/assets/signs2.jpg" alt="Handmade bitachon signs">
-  <p>Bitachon means knowing that Hashem is always there. That He created us, watches our every step, and knows everything before it happens. When you have bitachon, you don't have to worry, because even the hard is good. It is a lesson Hashem wants us to learn, and He is holding our hand through all of it.</p>
-  <h2>Made by hand, one at a time</h2>
-  <p>I shape every piece myself, from a lump of clay to a finished blessing for your home. No two are ever quite the same. My hope is simple: that each piece, whether a havdalah holder, a sign, a mezuzah, or a tee, helps you remember Hashem and feel that He is with you.</p>
-  <p class="center" style="color:#2B5C99;font-family:'Playfair Display',serif;font-style:normal;font-size:22px;margin-top:36px">Trust in Hashem.</p>
+  <div id="about-body">
+    <p>Every morning I would wake up and write a few words where I would see them first thing: don't worry, Hashem knows what to do. Those little reminders carried me through hard mornings, and slowly they became something I wanted to share.</p>
+    <p>Bitachon means knowing that Hashem is always there. That He created us, watches our every step, and knows everything before it happens. When you have bitachon, you don't have to worry, because even the hard is good. It is a lesson Hashem wants us to learn, and He is holding our hand through all of it.</p>
+    <p>I shape every piece myself, from a lump of clay to a finished blessing for your home. No two are ever quite the same. My hope is simple: that each piece helps you remember Hashem and feel that He is with you.</p>
+  </div>
+  <p class="center" style="color:#2B5C99;font-family:'Playfair Display',serif;font-size:22px;margin-top:36px">Trust in Hashem.</p>
 </div>
 <div class="btn-row"><a class="btn" href="/shop.html">Explore the Collection</a></div>
+<script>fetch("/api/config").then(function(r){return r.json()}).then(function(c){if(c.about){if(c.about.quote)document.getElementById("about-quote").textContent=c.about.quote;var ps=c.about.paragraphs||[];if(ps.length){document.getElementById("about-body").innerHTML=ps.map(function(p){return "<p>"+p.replace(/&/g,"&amp;").replace(/</g,"&lt;")+"</p>"}).join("")}}}).catch(function(){});</script>
 """
 page("about.html", "Our Story", about)
 
@@ -134,8 +139,12 @@ ship = hero("Help", "Shipping &amp; Returns") + """
 """
 page("shipping.html", "Shipping & Returns", ship)
 
-# ---- Contact ----
-contact = hero("Get in Touch", "Contact", "We would love to hear from you.") + """
+# ---- Contact (intro/phone come from editable config) ----
+contact = """
+<div class="page-hero"><span class="ey">Get in Touch</span><h1>Contact</h1><p id="c-intro">We would love to hear from you.</p><div class="divider"></div></div>
+<div id="c-block" class="center" style="max-width:560px;margin:0 auto 6px;color:#3a4452"></div>
+<script>fetch("/api/config").then(function(r){return r.json()}).then(function(c){var ct=c.contact||{};if(ct.intro)document.getElementById("c-intro").textContent=ct.intro;var b="";if(ct.phone)b+='<p style="font-family:\\'Playfair Display\\',serif;font-size:20px"><a style="color:#2B5C99" href="'+(ct.phoneHref||("tel:"+ct.phone))+'">'+ct.phone+"</a></p>";if(ct.subtext)b+="<p>"+ct.subtext+"</p>";document.getElementById("c-block").innerHTML=b;}).catch(function(){});</script>
+""" + """
 <form class="form" onsubmit="return false">
   <label>Name</label><input type="text" placeholder="Your name">
   <label>Email</label><input type="email" placeholder="you@email.com">
