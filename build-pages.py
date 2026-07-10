@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # Builds basic on-brand subpages for Bitachon Judaica, sharing one stylesheet.
 import os
-OUT = os.path.dirname(os.path.abspath(__file__))
+OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "public")
 
 HEAD = """<!doctype html>
 <html lang="en">
@@ -61,49 +61,40 @@ def hero(ey, h1, sub=""):
     return (f'<div class="page-hero"><span class="ey">{ey}</span><h1>{h1}</h1>'
             f'{p}<div class="divider"></div></div>')
 
-# ---- Shop ----
-shop = hero("The Collections", "Shop", "Handcrafted Judaica, made one piece at a time.") + """
-<section><div class="wrap">
-  <div class="cats">
-    <a class="cat" href="/contact.html"><div class="ph"><img src="/assets/daisy.jpg" alt=""></div><h3>Art &amp; Clay</h3></a>
-    <a class="cat" href="/contact.html"><div class="ph"><img src="/assets/havdalah-blue2.jpg" alt=""></div><h3>Havdalah</h3></a>
-    <a class="cat" href="/contact.html"><div class="ph"><img src="/assets/signs.jpg" alt=""></div><h3>Signs &amp; Words</h3></a>
-    <a class="cat" href="/apparel.html"><div class="ph"><div class="tee"><span>Apparel</span></div></div><h3>Apparel &amp; Gifts</h3></a>
-  </div>
-</div></section>
-<div class="band"><div class="wrap">
-  <span class="ey">One of a kind</span>
-  <h2>Online ordering is coming soon</h2>
-  <a href="/contact.html">Inquire about a piece</a>
-</div></div>
-"""
+def grid(category):
+    arg = "null" if category is None else '"' + category.replace('"', '\\"') + '"'
+    return ('<section><div class="wrap"><div id="products" class="cats"></div></div></section>'
+            '<script src="/assets/store.js"></script>'
+            f'<script>BJStore.render("products", {arg})</script>')
+
+def band(ey, h2, href, label):
+    return f'<div class="band"><div class="wrap"><span class="ey">{ey}</span><h2>{h2}</h2><a href="{href}">{label}</a></div></div>'
+
+# ---- Shop (all products) ----
+shop = (hero("The Collections", "Shop", "Handcrafted Judaica, made one piece at a time.")
+        + grid(None)
+        + band("For schools &amp; groups", "Bulk &amp; custom orders", "/bulk.html", "Request a quote"))
 page("shop.html", "Shop", shop)
 
 # ---- Mezuzahs ----
-mez = hero("Collection", "Mezuzahs", "Handmade mezuzah cases for every doorway in your home.") + """
-<section><div class="wrap center" style="max-width:760px;margin:0 auto">
-  <p style="color:#3a4452;font-size:19px">Each mezuzah is sculpted and glazed by hand, made to carry a quiet reminder of Hashem onto every doorpost. New pieces are added often.</p>
-</div></section>
-<div class="band"><div class="wrap">
-  <span class="ey">Made to order</span>
-  <h2>Reach out to commission a mezuzah</h2>
-  <a href="/contact.html">Get in touch</a>
-</div></div>
-"""
+mez = (hero("Collection", "Mezuzahs", "Handmade mezuzah cases for every doorway in your home.")
+       + grid("Mezuzahs")
+       + band("Made to order", "Reach out to commission a mezuzah", "/contact.html", "Get in touch"))
 page("mezuzahs.html", "Mezuzahs", mez)
 
 # ---- Apparel ----
-app = hero("Collection", "Apparel &amp; Gifts", "Tees, hats, and everyday pieces that carry the message.") + """
-<section><div class="wrap center" style="max-width:760px;margin:0 auto">
-  <p style="color:#3a4452;font-size:19px">From "Trust in Hashem" tees to small keepsakes, our apparel and gifts are made to wear your bitachon with you. Choose your color and size when the shop opens, or ask about a custom run for your school or group.</p>
-</div></section>
-<div class="band"><div class="wrap">
-  <span class="ey">Schools &amp; groups welcome</span>
-  <h2>Ask about apparel and bulk orders</h2>
-  <a href="/bulk.html">Bulk &amp; custom orders</a>
-</div></div>
-"""
+app = (hero("Collection", "Apparel &amp; Gifts", "Tees, hats, and everyday pieces that carry the message.")
+       + grid("Apparel & Gifts")
+       + band("Schools &amp; groups welcome", "Ask about a custom run", "/bulk.html", "Bulk &amp; custom orders"))
 page("apparel.html", "Apparel & Gifts", app)
+
+# ---- Generic category page (reads ?c=<category>) ----
+category = ('<div class="page-hero"><span class="ey">Collection</span>'
+            '<h1 id="cat-title">Shop</h1><div class="divider"></div></div>'
+            '<section><div class="wrap"><div id="products" class="cats"></div></div></section>'
+            '<script src="/assets/store.js"></script>'
+            '<script>BJStore.renderFromQuery("products","cat-title")</script>')
+page("category.html", "Shop", category)
 
 # ---- About ----
 about = hero("Our Story", "It began on my mirror") + """
