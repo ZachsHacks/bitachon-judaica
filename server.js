@@ -14,14 +14,19 @@ const MAX_BODY = 25 * 1024 * 1024;      // request cap (base64 inflates ~33%)
 const MAX_IMG = 8 * 1024 * 1024;        // decoded image cap
 const CATEGORIES = ["Art & Clay", "Havdalah", "Mezuzahs", "Signs & Words", "Apparel & Gifts"];
 
-function loadPassword() {
-  if (process.env.ADMIN_PASSWORD) return process.env.ADMIN_PASSWORD.trim();
+function envFile() {
+  const o = {};
   try {
-    const m = fs.readFileSync(path.join(__dirname, ".env"), "utf8").match(/^ADMIN_PASSWORD=(.*)$/m);
-    return m ? m[1].trim() : "";
-  } catch { return ""; }
+    fs.readFileSync(path.join(__dirname, ".env"), "utf8").split("\n").forEach(l => {
+      const m = l.match(/^([A-Z_]+)=(.*)$/);
+      if (m) o[m[1]] = m[2].trim();
+    });
+  } catch {}
+  return o;
 }
-const PASSWORD = loadPassword();
+const ENV = envFile();
+const envVal = k => (process.env[k] || ENV[k] || "").trim();
+const PASSWORD = envVal("ADMIN_PASSWORD");
 const TOKEN = PASSWORD ? crypto.createHash("sha256").update("bj:" + PASSWORD).digest("hex") : null;
 
 const TYPES = {
@@ -54,6 +59,28 @@ function readBody(req, cb) {
   req.on("data", d => { len += d.length; if (len > MAX_BODY) req.destroy(); else chunks.push(d); });
   req.on("end", () => cb(Buffer.concat(chunks).toString("utf8")));
   req.on("error", () => cb(null));
+}
+async function aiGenerate(field, b) {
+  const key = envVal("OPENROUTER_API_KEY");
+  if (!key) throw new Error("AI not configured");
+  const brand = 'You are writing product copy for "Bitachon Judaica", handcrafted Judaica made by hand. Bitachon means trust in Hashem; every piece is a warm, faith-filled reminder that Hashem is always with you. Boutique, heartfelt tone.';
+  const known = [b.category ? `Category: ${b.category}` : "", (field === "description" && b.name) ? `Name: "${b.name}"` : ""].filter(Boolean).join("\n");
+  const prompt = field === "name"
+    ? 'Give a short product name, MAXIMUM 3 words, boutique and spiritual feel (e.g. "Lotus Havdalah", "Garden Blessing"). Return ONLY the name, no quotes, no markdown.'
+    : 'Write EXACTLY 2 short, warm sentences: what makes this piece visually special and its spiritual meaning. Plain text only, no markdown, do not repeat the name.';
+  const content = [];
+  const img = b.imageData || b.imageUrl;
+  if (img) content.push({ type: "image_url", image_url: { url: img } });
+  content.push({ type: "text", text: `${brand}\n\n${known ? known + "\n\n" : ""}${prompt}` });
+  const r = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+    method: "POST",
+    headers: { "Authorization": "Bearer " + key, "Content-Type": "application/json" },
+    body: JSON.stringify({ model: "anthropic/claude-haiku-4.5", max_tokens: field === "name" ? 15 : 170, messages: [{ role: "user", content }] }),
+  });
+  if (!r.ok) throw new Error("AI request failed");
+  const d = await r.json();
+  return (d.choices?.[0]?.message?.content || "").trim()
+    .replace(/^#{1,6}\s+/gm, "").replace(/\*{1,2}([^*]+)\*{1,2}/g, "$1").replace(/`([^`]+)`/g, "$1").replace(/^["']|["']$/g, "").trim();
 }
 function saveImage(id, dataUrl) {
   const m = /^data:image\/(png|jpe?g|webp);base64,(.+)$/s.exec(dataUrl || "");
@@ -104,6 +131,19 @@ const server = http.createServer((req, res) => {
           writeProducts(list);
           return json(res, 200, p);
         } catch (e) { return json(res, 400, { error: String(e.message || e) }); }
+      });
+    }
+    if (url === "/api/generate" && req.method === "POST") {
+      if (!authed(req)) return json(res, 401, { error: "unauthorized" });
+      return readBody(req, body => {
+        (async () => {
+          try {
+            const b = JSON.parse(body || "{}");
+            const field = b.field === "name" ? "name" : "description";
+            const text = await aiGenerate(field, b);
+            json(res, 200, { text });
+          } catch (e) { json(res, 500, { error: String(e.message || e) }); }
+        })();
       });
     }
     if (url === "/api/products/delete" && req.method === "POST") {

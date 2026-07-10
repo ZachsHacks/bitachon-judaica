@@ -41,6 +41,8 @@
   .off{opacity:.5}
   #preview{max-width:160px;border-radius:6px;margin-top:8px;display:none}
   .hint{font-size:12px;color:var(--soft);margin-top:4px}
+  .ai{background:transparent;color:var(--gold);border:1px solid var(--gold);border-radius:20px;padding:3px 12px;font-size:11px;letter-spacing:.06em;margin-left:8px;vertical-align:middle}
+  .ai[disabled]{opacity:.5}
 </style>
 </head>
 <body>
@@ -63,7 +65,7 @@
     <div class="card">
       <h2 id="formTitle">Add a product</h2>
       <div class="row">
-        <div><label>Name</label><input id="f_name" placeholder="e.g. Lotus Havdalah Holder"></div>
+        <div><label>Name <button type="button" class="ai" id="genName">✨ AI</button></label><input id="f_name" placeholder="e.g. Lotus Havdalah Holder"></div>
         <div><label>Category</label><select id="f_category"></select></div>
       </div>
       <div class="row">
@@ -73,8 +75,9 @@
           <select id="f_available"><option value="true">Available</option><option value="false">Sold out / hidden</option></select>
         </div>
       </div>
-      <label>Description (optional)</label>
+      <label>Description (optional) <button type="button" class="ai" id="genDesc">✨ AI</button></label>
       <textarea id="f_description" placeholder="A few words about the piece"></textarea>
+      <div class="hint">Add a photo first, then let AI suggest a name or description.</div>
       <label>Photo</label>
       <input type="file" id="f_photo" accept="image/*">
       <div class="hint">Photos are shrunk automatically so the site stays fast.</div>
@@ -93,7 +96,16 @@
 
 <script>
 const $ = id => document.getElementById(id);
-let CATS = [], editingId = null, imageData = null;
+let CATS = [], editingId = null, imageData = null, currentImage = null;
+
+async function genField(field, targetId, btn){
+  const old = btn.textContent; btn.disabled = true; btn.textContent = '…';
+  const imageUrl = (!imageData && currentImage) ? (location.origin + currentImage) : undefined;
+  const r = await api('/api/generate','POST',{ field, name:$('f_name').value, category:$('f_category').value, imageData:imageData||undefined, imageUrl });
+  if(r.ok && r.data.text) $(targetId).value = r.data.text;
+  else alert(r.data.error || 'AI failed');
+  btn.disabled = false; btn.textContent = old;
+}
 
 const esc = s => (s||"").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 
@@ -147,15 +159,17 @@ $('saveBtn').onclick = async () => {
   resetForm(); loadList();
 };
 $('cancelBtn').onclick = resetForm;
+$('genName').onclick = e => genField('name','f_name',e.currentTarget);
+$('genDesc').onclick = e => genField('description','f_description',e.currentTarget);
 
 function resetForm(){
-  editingId=null; imageData=null;
+  editingId=null; imageData=null; currentImage=null;
   $('f_name').value=''; $('f_price').value=''; $('f_description').value='';
   $('f_available').value='true'; $('f_photo').value=''; $('preview').style.display='none';
   $('formTitle').textContent='Add a product'; $('cancelBtn').style.display='none'; $('saveMsg').textContent='';
 }
 function edit(p){
-  editingId=p.id; imageData=null;
+  editingId=p.id; imageData=null; currentImage=p.image||null;
   $('f_name').value=p.name||''; $('f_category').value=p.category||CATS[0];
   $('f_price').value=p.price||''; $('f_description').value=p.description||'';
   $('f_available').value = p.available===false ? 'false':'true';
