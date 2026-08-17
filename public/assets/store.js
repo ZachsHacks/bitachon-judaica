@@ -10,7 +10,9 @@ window.BJStore = {
     const tags = (p.tags || []).map(t => `<span class="chip">${this.esc(t)}</span>`).join('');
     const sub = p.tagline ? `<p class="cdesc">${this.esc(p.tagline)}</p>` : '';
     const price = p.price ? `<div class="cprice">${this.esc(p.price)}</div>` : '';
-    return `<div class="cat prod" data-i="${i}">${img}<h3>${this.esc(p.name)}</h3>${price}${sub}${tags?`<div class="chips">${tags}</div>`:''}</div>`;
+    // ponytail: wide-row rendering keyed to the category name; add a per-product flag if she needs it elsewhere
+    const wide = (p.categories || []).includes('Bumper Stickers') ? ' wide' : '';
+    return `<div class="cat prod${wide}" data-i="${i}">${img}<h3>${this.esc(p.name)}</h3>${price}${sub}${tags?`<div class="chips">${tags}</div>`:''}</div>`;
   },
   async render(id, category){
     this._pid = id; this._cat = category || null;
@@ -66,7 +68,7 @@ window.BJStore = {
         ${tags?`<div class="chips">${tags}</div>`:''}
         <a class="lb-inquire" href="/contact.html">Inquire about this piece</a>
       </div></div>`;
-    box.style.display='block'; document.body.style.overflow='hidden';
+    box.style.display='flex'; document.body.style.overflow='hidden';
     const close=()=>{box.style.display='none';document.body.style.overflow='';};
     box.querySelector('.lb-back').onclick=close; box.querySelector('.lb-x').onclick=close;
     box.querySelectorAll('[data-t]').forEach(t=>t.onclick=()=>{document.getElementById('lb-main').src=t.src;box.querySelectorAll('[data-t]').forEach(x=>x.classList.remove('on'));t.classList.add('on');});
