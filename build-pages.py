@@ -63,18 +63,22 @@ def hero(ey, h1, sub=""):
 
 def grid(category):
     arg = "null" if category is None else '"' + category.replace('"', '\\"') + '"'
-    return ('<section><div class="wrap"><div id="products" class="cats"></div></div></section>'
+    return ('<section><div class="wrap shoplayout">'
+            '<aside id="catnav" class="catnav"></aside>'
+            '<div id="products" class="cats"></div>'
+            '</div></section>'
             '<script src="/assets/store.js"></script>'
-            f'<script>BJStore.render("products", {arg})</script>')
+            f'<script>BJStore.render("products", {arg});BJStore.renderCats("catnav", {arg})</script>')
 
 def band(ey, h2, href, label):
     return f'<div class="band"><div class="wrap"><span class="ey">{ey}</span><h2>{h2}</h2><a href="{href}">{label}</a></div></div>'
 
 # ---- Shop (all products + dynamic category nav) ----
-shop = (hero("The Collections", "Shop", "Handcrafted Judaica, made one piece at a time.")
-        + '<section style="padding-bottom:0"><div class="wrap"><div id="catnav" class="catnav"></div></div></section>'
+shop = ('<div class="page-hero"><span class="ey">The Collections</span>'
+        '<h1 id="cat-title">Shop</h1>'
+        '<p>Handcrafted Judaica, made one piece at a time.</p>'
+        '<div class="divider"></div></div>'
         + grid(None)
-        + '<script>BJStore.renderCats("catnav")</script>'
         + band("For schools &amp; groups", "Bulk &amp; custom orders", "/bulk.html", "Request a quote"))
 page("shop.html", "Shop", shop)
 
@@ -92,10 +96,18 @@ page("apparel.html", "Apparel & Gifts", app)
 
 # ---- Generic category page (reads ?c=<category>) ----
 category = ('<div class="page-hero"><span class="ey">Collection</span>'
-            '<h1 id="cat-title">Shop</h1><div class="divider"></div></div>'
-            '<section><div class="wrap"><div id="products" class="cats"></div></div></section>'
+            '<h1 id="cat-title"></h1>'
+            '<script>(function(){var c=new URLSearchParams(location.search).get("c");'
+            'if(c){document.getElementById("cat-title").textContent=c;'
+            'document.title=c+" | Bitachon Judaica";}})();</script>'
+            '<div class="divider"></div></div>'
+            '<section><div class="wrap shoplayout">'
+            '<aside id="catnav" class="catnav"></aside>'
+            '<div id="products" class="cats"></div>'
+            '</div></section>'
             '<script src="/assets/store.js"></script>'
-            '<script>BJStore.renderFromQuery("products","cat-title")</script>')
+            '<script>BJStore.renderFromQuery("products","cat-title");'
+            'BJStore.renderCats("catnav", new URLSearchParams(location.search).get("c"))</script>')
 page("category.html", "Shop", category)
 
 # ---- About (headline + paragraphs come from editable config) ----

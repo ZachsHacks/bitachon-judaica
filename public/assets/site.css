@@ -49,6 +49,13 @@ section{padding:20px 0 90px}
 .catnav{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:8px}
 .catchip{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--navy);border:1px solid var(--line);border-radius:24px;padding:8px 18px}
 .catchip:hover{border-color:var(--gold);color:var(--gold)}
+.catchip.on{background:var(--navy);border-color:var(--navy);color:#fff}
+/* shop page: category nav as a left sidebar on desktop */
+.shoplayout{display:flex;gap:44px;align-items:flex-start}
+.shoplayout .catnav{flex-direction:column;flex-wrap:nowrap;width:230px;flex:none;position:sticky;top:24px}
+.shoplayout .catchip{text-align:left;border-radius:8px}
+.shoplayout .cats{flex:1;grid-template-columns:repeat(3,1fr)}
+@media(max-width:900px){.shoplayout{display:block}.shoplayout .catnav{flex-direction:row;flex-wrap:wrap;width:auto;position:static;margin-bottom:24px}}
 .chips{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-top:10px}
 .chip{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--navy);border:1px solid var(--line);border-radius:20px;padding:3px 10px}
 /* lightbox */
