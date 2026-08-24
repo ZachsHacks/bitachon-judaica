@@ -18,11 +18,8 @@ window.BJ_API=/(^|\.)bitachonjudaica\.com$/.test(location.hostname)?"":"https://
 <body>
 <header>
   <div class="topbar">
-    <a href="/" class="logo brand"><img class="logo-img" src="/assets/logo.png" alt="Bitachon Judaica"><span class="brand-text">Bitachon Judaica</span></a>
+    <a href="/" class="logo brand"><img class="logo-img" src="/assets/logo.png" alt="Bitachon Judaica"><span><span class="brand-text">Bitachon Judaica</span><span class="brand-sub">Trust in Hashem</span></span></a>
     <nav><ul>
-      <li><a href="/shop.html">Shop</a></li>
-      <li><a href="/mezuzahs.html">Mezuzahs</a></li>
-      <li><a href="/apparel.html">Apparel</a></li>
       <li><a href="/about.html">About</a></li>
     </ul></nav>
     <div class="icons">Cart (0)</div>
@@ -30,18 +27,37 @@ window.BJ_API=/(^|\.)bitachonjudaica\.com$/.test(location.hostname)?"":"https://
 </header>
 <main>
 
-<div class="page-hero"><span class="ey">Our Story</span><h1 id="about-quote">It began on my mirror</h1><div class="divider"></div></div>
+<div class="letterhead">
+  <img class="lh-seal" src="/assets/logo.png" alt="">
+  <h1 class="lh-name">Bitachon Judaica</h1>
+  <div class="lh-tag">Trust in Hashem</div>
+  <div class="lh-rule"></div>
+  <div class="lh-lines">
+    <a href="https://www.bitachonjudaica.com">www.bitachonjudaica.com</a>
+    <a href="https://www.madeinheavenmezuzahs.com">www.madeinheavenmezuzahs.com</a>
+    <span id="lh-phone"></span>
+    <a id="lh-email" href="mailto:bitachonjudaica@gmail.com">bitachonjudaica@gmail.com</a>
+  </div>
+</div>
+<div class="page-hero" style="padding-top:26px"><span class="ey">Our Story</span><h1 id="about-quote">It began on my mirror</h1><div class="divider"></div></div>
 <div class="prose">
-  <img src="/assets/signs2.jpg" alt="Handmade bitachon signs">
   <div id="about-body">
     <p>Every morning I would wake up and write a few words where I would see them first thing: don't worry, Hashem knows what to do. Those little reminders carried me through hard mornings, and slowly they became something I wanted to share.</p>
     <p>Bitachon means knowing that Hashem is always there. That He created us, watches our every step, and knows everything before it happens. When you have bitachon, you don't have to worry, because even the hard is good. It is a lesson Hashem wants us to learn, and He is holding our hand through all of it.</p>
     <p>I shape every piece myself, from a lump of clay to a finished blessing for your home. No two are ever quite the same. My hope is simple: that each piece helps you remember Hashem and feel that He is with you.</p>
   </div>
   <p class="center" style="color:#2B5C99;font-family:'Playfair Display',serif;font-size:22px;margin-top:36px">Trust in Hashem.</p>
+  <img src="/assets/signs2.jpg" alt="Handmade bitachon signs" style="margin-top:34px">
 </div>
-<div class="btn-row"><a class="btn" href="/shop.html">Explore the Collection</a></div>
-<script>fetch((window.BJ_API||"")+"/api/config").then(function(r){return r.json()}).then(function(c){if(c.about){if(c.about.quote)document.getElementById("about-quote").textContent=c.about.quote;var ps=c.about.paragraphs||[];if(ps.length){document.getElementById("about-body").innerHTML=ps.map(function(p){return "<p>"+p.replace(/&/g,"&amp;").replace(/</g,"&lt;")+"</p>"}).join("")}}}).catch(function(){});</script>
+<div class="btn-row"><a class="btn" href="/shop.html">See Everything</a></div>
+<script>fetch((window.BJ_API||"")+"/api/config").then(function(r){return r.json()}).then(function(c){
+  var a=c.about||{}, ct=c.contact||{};
+  /* A headline that is really a list of web addresses is the old bug, so ignore it and keep the real one. */
+  if(a.quote && a.quote.indexOf("www.")===-1) document.getElementById("about-quote").textContent=a.quote;
+  var ps=a.paragraphs||[];
+  if(ps.length){document.getElementById("about-body").innerHTML=ps.map(function(p){return "<p>"+p.replace(/&/g,"&amp;").replace(/</g,"&lt;")+"</p>"}).join("")}
+  if(ct.phone){var e=document.getElementById("lh-phone");e.innerHTML='<a href="'+(/^tel:/.test(ct.phoneHref||"")?ct.phoneHref:"tel:"+String(ct.phone).replace(/[^0-9+]/g,""))+'">'+ct.phone+'</a>';}
+}).catch(function(){});</script>
 </main>
 <footer>
   <div class="wrap frow">

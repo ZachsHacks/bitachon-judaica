@@ -18,11 +18,8 @@ window.BJ_API=/(^|\.)bitachonjudaica\.com$/.test(location.hostname)?"":"https://
 <body>
 <header>
   <div class="topbar">
-    <a href="/" class="logo brand"><img class="logo-img" src="/assets/logo.png" alt="Bitachon Judaica"><span class="brand-text">Bitachon Judaica</span></a>
+    <a href="/" class="logo brand"><img class="logo-img" src="/assets/logo.png" alt="Bitachon Judaica"><span><span class="brand-text">Bitachon Judaica</span><span class="brand-sub">Trust in Hashem</span></span></a>
     <nav><ul>
-      <li><a href="/shop.html">Shop</a></li>
-      <li><a href="/mezuzahs.html">Mezuzahs</a></li>
-      <li><a href="/apparel.html">Apparel</a></li>
       <li><a href="/about.html">About</a></li>
     </ul></nav>
     <div class="icons">Cart (0)</div>
@@ -34,13 +31,26 @@ window.BJ_API=/(^|\.)bitachonjudaica\.com$/.test(location.hostname)?"":"https://
 <div id="c-block" class="center" style="max-width:560px;margin:0 auto 6px;color:#3a4452"></div>
 <script>fetch((window.BJ_API||"")+"/api/config").then(function(r){return r.json()}).then(function(c){var ct=c.contact||{};if(ct.intro)document.getElementById("c-intro").textContent=ct.intro;var b="";if(ct.phone)b+='<p style="font-family:\'Playfair Display\',serif;font-size:20px"><a style="color:#2B5C99" href="'+(ct.phoneHref||("tel:"+ct.phone))+'">'+ct.phone+"</a></p>";if(ct.subtext)b+="<p>"+ct.subtext+"</p>";document.getElementById("c-block").innerHTML=b;}).catch(function(){});</script>
 
-<form class="form" onsubmit="return false">
-  <label>Name</label><input type="text" placeholder="Your name">
-  <label>Email</label><input type="email" placeholder="you@email.com">
-  <label>Message</label><textarea placeholder="Tell us what you are looking for"></textarea>
-  <div class="center"><button>Send Message</button></div>
-  <p class="alt">This form is not connected yet. We will wire it to your inbox before launch.</p>
+<form class="form" id="cform">
+  <label>Name</label><input type="text" id="cf_name" placeholder="Your name" required>
+  <label>Email</label><input type="email" id="cf_email" placeholder="you@email.com" required>
+  <label>Message</label><textarea id="cf_msg" placeholder="Tell us what you are looking for" required></textarea>
+  <div class="center"><button type="submit">Send Message</button></div>
+  <p class="alt">This opens your email app with the message ready to send, or write to
+    <a style="color:#2B5C99" href="mailto:bitachonjudaica@gmail.com">bitachonjudaica@gmail.com</a>.</p>
 </form>
+<script>
+/* ponytail: hands the message to the visitor's own email app. No mail server to run or pay for.
+   Swap for a real form service if visitors without a mail app start dropping off. */
+document.getElementById("cform").addEventListener("submit", function(e){
+  e.preventDefault();
+  var n=document.getElementById("cf_name").value.trim(),
+      m=document.getElementById("cf_msg").value.trim(),
+      r=document.getElementById("cf_email").value.trim();
+  var body=m+"\n\n"+n+(r?"\n"+r:"");
+  location.href="mailto:bitachonjudaica@gmail.com?subject="+encodeURIComponent("Website message from "+n)+"&body="+encodeURIComponent(body);
+});
+</script>
 </main>
 <footer>
   <div class="wrap frow">

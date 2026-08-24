@@ -23,11 +23,8 @@ window.BJ_API=/(^|\\.)bitachonjudaica\\.com$/.test(location.hostname)?"":"https:
 <body>
 <header>
   <div class="topbar">
-    <a href="/" class="logo brand"><img class="logo-img" src="/assets/logo.png" alt="Bitachon Judaica"><span class="brand-text">Bitachon Judaica</span></a>
+    <a href="/" class="logo brand"><img class="logo-img" src="/assets/logo.png" alt="Bitachon Judaica"><span><span class="brand-text">Bitachon Judaica</span><span class="brand-sub">Trust in Hashem</span></span></a>
     <nav><ul>
-      <li><a href="/shop.html">Shop</a></li>
-      <li><a href="/mezuzahs.html">Mezuzahs</a></li>
-      <li><a href="/apparel.html">Apparel</a></li>
       <li><a href="/about.html">About</a></li>
     </ul></nav>
     <div class="icons">Cart (0)</div>
@@ -54,9 +51,12 @@ FOOT = """</main>
 </html>
 """
 
-def page(filename, title, body):
+def page(filename, title, body, full_title=None):
+    html = HEAD.format(title=title) + body + FOOT
+    if full_title:
+        html = html.replace(f"<title>{title} | Bitachon Judaica</title>", f"<title>{full_title}</title>", 1)
     with open(os.path.join(OUT, filename), "w") as f:
-        f.write(HEAD.format(title=title) + body + FOOT)
+        f.write(html)
     print("wrote", filename)
 
 def hero(ey, h1, sub=""):
@@ -66,36 +66,62 @@ def hero(ey, h1, sub=""):
 
 def grid(category):
     arg = "null" if category is None else '"' + category.replace('"', '\\"') + '"'
-    return ('<section><div class="wrap shoplayout">'
-            '<aside id="catnav" class="catnav"></aside>'
+    return ('<section><div class="wrap">'
+            '<div id="search" class="searchwrap"></div>'
+            '<nav id="catnav" class="catnav"></nav>'
             '<div id="products" class="cats"></div>'
             '</div></section>'
             '<script src="/assets/store.js"></script>'
-            f'<script>BJStore.render("products", {arg});BJStore.renderCats("catnav", {arg})</script>')
+            f'<script>BJStore.renderSearch("search");BJStore.render("products", {arg});'
+            f'BJStore.renderCats("catnav", {arg})</script>')
 
 def band(ey, h2, href, label):
     return f'<div class="band"><div class="wrap"><span class="ey">{ey}</span><h2>{h2}</h2><a href="{href}">{label}</a></div></div>'
 
 # ---- Shop (all products + dynamic category nav) ----
+# ---- Homepage: a storefront, not a splash page. Everything she sells is visible right away. ----
+home = """
+<div class="home-hero">
+  <div class="wrap">
+    <p class="home-kicker">Mezuzah covers, gifts, apparel, sheitels, and Jewish art</p>
+    <div id="search" class="searchwrap"></div>
+  </div>
+</div>
+<section style="padding-top:6px">
+  <div class="wrap">
+    <h2 class="sec-title">Shop by category</h2>
+    <div id="tiles" class="tiles"></div>
+  </div>
+</section>
+<section style="padding-top:14px">
+  <div class="wrap">
+    <h2 class="sec-title">Everything in the shop</h2>
+    <nav id="catnav" class="catnav"></nav>
+    <div id="products" class="cats"></div>
+  </div>
+</section>
+<script src="/assets/store.js"></script>
+<script>
+BJStore.renderSearch("search");
+BJStore.renderTiles("tiles");
+BJStore.renderCats("catnav", null);
+BJStore.render("products", null, true);
+</script>
+"""
+page("index.html", "Home", home, full_title="Bitachon Judaica, Judaica and Gifts")
+
+# The old "made one piece at a time" line is gone on purpose: it is not true of the shirts,
+# sheitels, baby gifts, or anything ordered in, only of the clay work.
 shop = ('<div class="page-hero"><span class="ey">The Collections</span>'
-        '<h1 id="cat-title">Shop</h1>'
-        '<p>Handcrafted Judaica, made one piece at a time.</p>'
+        '<h1 id="cat-title">Everything</h1>'
         '<div class="divider"></div></div>'
         + grid(None)
         + band("For schools &amp; groups", "Bulk &amp; custom orders", "/bulk.html", "Request a quote"))
 page("shop.html", "Shop", shop)
 
-# ---- Mezuzahs ----
-mez = (hero("Collection", "Mezuzahs", "Handmade mezuzah cases for every doorway in your home.")
-       + grid("Mezuzahs")
-       + band("Made to order", "Reach out to commission a mezuzah", "/contact.html", "Get in touch"))
-page("mezuzahs.html", "Mezuzahs", mez)
-
-# ---- Apparel ----
-app = (hero("Collection", "Apparel &amp; Gifts", "Tees, hats, and everyday pieces that carry the message.")
-       + grid("Apparel & Gifts")
-       + band("Schools &amp; groups welcome", "Ask about a custom run", "/bulk.html", "Bulk &amp; custom orders"))
-page("apparel.html", "Apparel & Gifts", app)
+# mezuzahs.html and apparel.html are intentionally gone. They hardcoded old category names
+# ("Mezuzahs", "Apparel & Gifts") that no longer exist since the categories were renamed in the
+# admin, so both pages rendered empty. category.html handles every category from the config.
 
 # ---- Generic category page (reads ?c=<category>) ----
 category = ('<div class="page-hero"><span class="ey">Collection</span>'
@@ -104,29 +130,50 @@ category = ('<div class="page-hero"><span class="ey">Collection</span>'
             'if(c){document.getElementById("cat-title").textContent=c;'
             'document.title=c+" | Bitachon Judaica";}})();</script>'
             '<div class="divider"></div></div>'
-            '<section><div class="wrap shoplayout">'
-            '<aside id="catnav" class="catnav"></aside>'
+            '<section><div class="wrap">'
+            '<div id="search" class="searchwrap"></div>'
+            '<nav id="catnav" class="catnav"></nav>'
             '<div id="products" class="cats"></div>'
             '</div></section>'
             '<script src="/assets/store.js"></script>'
-            '<script>BJStore.renderFromQuery("products","cat-title");'
+            '<script>BJStore.renderSearch("search");'
+            'BJStore.renderFromQuery("products","cat-title");'
             'BJStore.renderCats("catnav", new URLSearchParams(location.search).get("c"))</script>')
 page("category.html", "Shop", category)
 
 # ---- About (headline + paragraphs come from editable config) ----
 about = """
-<div class="page-hero"><span class="ey">Our Story</span><h1 id="about-quote">It began on my mirror</h1><div class="divider"></div></div>
+<div class="letterhead">
+  <img class="lh-seal" src="/assets/logo.png" alt="">
+  <h1 class="lh-name">Bitachon Judaica</h1>
+  <div class="lh-tag">Trust in Hashem</div>
+  <div class="lh-rule"></div>
+  <div class="lh-lines">
+    <a href="https://www.bitachonjudaica.com">www.bitachonjudaica.com</a>
+    <a href="https://www.madeinheavenmezuzahs.com">www.madeinheavenmezuzahs.com</a>
+    <span id="lh-phone"></span>
+    <a id="lh-email" href="mailto:bitachonjudaica@gmail.com">bitachonjudaica@gmail.com</a>
+  </div>
+</div>
+<div class="page-hero" style="padding-top:26px"><span class="ey">Our Story</span><h1 id="about-quote">It began on my mirror</h1><div class="divider"></div></div>
 <div class="prose">
-  <img src="/assets/signs2.jpg" alt="Handmade bitachon signs">
   <div id="about-body">
     <p>Every morning I would wake up and write a few words where I would see them first thing: don't worry, Hashem knows what to do. Those little reminders carried me through hard mornings, and slowly they became something I wanted to share.</p>
     <p>Bitachon means knowing that Hashem is always there. That He created us, watches our every step, and knows everything before it happens. When you have bitachon, you don't have to worry, because even the hard is good. It is a lesson Hashem wants us to learn, and He is holding our hand through all of it.</p>
     <p>I shape every piece myself, from a lump of clay to a finished blessing for your home. No two are ever quite the same. My hope is simple: that each piece helps you remember Hashem and feel that He is with you.</p>
   </div>
   <p class="center" style="color:#2B5C99;font-family:'Playfair Display',serif;font-size:22px;margin-top:36px">Trust in Hashem.</p>
+  <img src="/assets/signs2.jpg" alt="Handmade bitachon signs" style="margin-top:34px">
 </div>
-<div class="btn-row"><a class="btn" href="/shop.html">Explore the Collection</a></div>
-<script>fetch((window.BJ_API||"")+"/api/config").then(function(r){return r.json()}).then(function(c){if(c.about){if(c.about.quote)document.getElementById("about-quote").textContent=c.about.quote;var ps=c.about.paragraphs||[];if(ps.length){document.getElementById("about-body").innerHTML=ps.map(function(p){return "<p>"+p.replace(/&/g,"&amp;").replace(/</g,"&lt;")+"</p>"}).join("")}}}).catch(function(){});</script>
+<div class="btn-row"><a class="btn" href="/shop.html">See Everything</a></div>
+<script>fetch((window.BJ_API||"")+"/api/config").then(function(r){return r.json()}).then(function(c){
+  var a=c.about||{}, ct=c.contact||{};
+  /* A headline that is really a list of web addresses is the old bug, so ignore it and keep the real one. */
+  if(a.quote && a.quote.indexOf("www.")===-1) document.getElementById("about-quote").textContent=a.quote;
+  var ps=a.paragraphs||[];
+  if(ps.length){document.getElementById("about-body").innerHTML=ps.map(function(p){return "<p>"+p.replace(/&/g,"&amp;").replace(/</g,"&lt;")+"</p>"}).join("")}
+  if(ct.phone){var e=document.getElementById("lh-phone");e.innerHTML='<a href="'+(/^tel:/.test(ct.phoneHref||"")?ct.phoneHref:"tel:"+String(ct.phone).replace(/[^0-9+]/g,""))+'">'+ct.phone+'</a>';}
+}).catch(function(){});</script>
 """
 page("about.html", "Our Story", about)
 
@@ -160,13 +207,26 @@ contact = """
 <div id="c-block" class="center" style="max-width:560px;margin:0 auto 6px;color:#3a4452"></div>
 <script>fetch((window.BJ_API||"")+"/api/config").then(function(r){return r.json()}).then(function(c){var ct=c.contact||{};if(ct.intro)document.getElementById("c-intro").textContent=ct.intro;var b="";if(ct.phone)b+='<p style="font-family:\\'Playfair Display\\',serif;font-size:20px"><a style="color:#2B5C99" href="'+(ct.phoneHref||("tel:"+ct.phone))+'">'+ct.phone+"</a></p>";if(ct.subtext)b+="<p>"+ct.subtext+"</p>";document.getElementById("c-block").innerHTML=b;}).catch(function(){});</script>
 """ + """
-<form class="form" onsubmit="return false">
-  <label>Name</label><input type="text" placeholder="Your name">
-  <label>Email</label><input type="email" placeholder="you@email.com">
-  <label>Message</label><textarea placeholder="Tell us what you are looking for"></textarea>
-  <div class="center"><button>Send Message</button></div>
-  <p class="alt">This form is not connected yet. We will wire it to your inbox before launch.</p>
+<form class="form" id="cform">
+  <label>Name</label><input type="text" id="cf_name" placeholder="Your name" required>
+  <label>Email</label><input type="email" id="cf_email" placeholder="you@email.com" required>
+  <label>Message</label><textarea id="cf_msg" placeholder="Tell us what you are looking for" required></textarea>
+  <div class="center"><button type="submit">Send Message</button></div>
+  <p class="alt">This opens your email app with the message ready to send, or write to
+    <a style="color:#2B5C99" href="mailto:bitachonjudaica@gmail.com">bitachonjudaica@gmail.com</a>.</p>
 </form>
+<script>
+/* ponytail: hands the message to the visitor's own email app. No mail server to run or pay for.
+   Swap for a real form service if visitors without a mail app start dropping off. */
+document.getElementById("cform").addEventListener("submit", function(e){
+  e.preventDefault();
+  var n=document.getElementById("cf_name").value.trim(),
+      m=document.getElementById("cf_msg").value.trim(),
+      r=document.getElementById("cf_email").value.trim();
+  var body=m+"\\n\\n"+n+(r?"\\n"+r:"");
+  location.href="mailto:bitachonjudaica@gmail.com?subject="+encodeURIComponent("Website message from "+n)+"&body="+encodeURIComponent(body);
+});
+</script>
 """
 page("contact.html", "Contact", contact)
 
