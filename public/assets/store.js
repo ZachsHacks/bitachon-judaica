@@ -3,10 +3,13 @@
 window.BJStore = {
   esc(s){ return (s||'').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); },
   _list: [], _all: null, _cfg: null, _pid: 'products', _nid: 'catnav', _cat: null,
-  async _products(){ if(!this._all){ try { this._all = await fetch('/api/products').then(r=>r.json()); } catch { this._all = []; } } return this._all; },
-  async _config(){ if(!this._cfg){ try { this._cfg = await fetch('/api/config').then(r=>r.json()); } catch { this._cfg = {}; } } return this._cfg; },
+  get _base(){ return window.BJ_API || ''; },
+  // Product photos live only on the live server, so preview builds must load them from there.
+  _img(s){ return this._base + (s || ''); },
+  async _products(){ if(!this._all){ try { this._all = await fetch(this._base+'/api/products').then(r=>r.json()); } catch { this._all = []; } } return this._all; },
+  async _config(){ if(!this._cfg){ try { this._cfg = await fetch(this._base+'/api/config').then(r=>r.json()); } catch { this._cfg = {}; } } return this._cfg; },
   card(p, i){
-    const img = (p.images && p.images[0]) ? `<div class="ph"><img src="${this.esc(p.images[0])}" alt="${this.esc(p.name)}"></div>` : `<div class="ph"></div>`;
+    const img = (p.images && p.images[0]) ? `<div class="ph"><img src="${this.esc(this._img(p.images[0]))}" alt="${this.esc(p.name)}"></div>` : `<div class="ph"></div>`;
     const tags = (p.tags || []).map(t => `<span class="chip">${this.esc(t)}</span>`).join('');
     const sub = p.tagline ? `<p class="cdesc">${this.esc(p.tagline)}</p>` : '';
     const price = p.price ? `<div class="cprice">${this.esc(p.price)}</div>` : '';
@@ -53,13 +56,13 @@ window.BJStore = {
   open(p){
     if(!p) return;
     const imgs = p.images && p.images.length ? p.images : [];
-    const thumbs = imgs.length > 1 ? `<div class="lb-thumbs">${imgs.map((s,i)=>`<img src="${this.esc(s)}" data-t="${i}" class="${i===0?'on':''}">`).join('')}</div>` : '';
+    const thumbs = imgs.length > 1 ? `<div class="lb-thumbs">${imgs.map((s,i)=>`<img src="${this.esc(this._img(s))}" data-t="${i}" class="${i===0?'on':''}">`).join('')}</div>` : '';
     const tags = (p.tags||[]).map(t=>`<span class="chip">${this.esc(t)}</span>`).join('');
     let box = document.getElementById('bj-lb');
     if(!box){ box = document.createElement('div'); box.id='bj-lb'; document.body.appendChild(box); }
     box.innerHTML = `<div class="lb-back"></div><div class="lb-card">
       <button class="lb-x">×</button>
-      <div class="lb-media">${imgs.length?`<img id="lb-main" src="${this.esc(imgs[0])}">`:''}${thumbs}</div>
+      <div class="lb-media">${imgs.length?`<img id="lb-main" src="${this.esc(this._img(imgs[0]))}">`:''}${thumbs}</div>
       <div class="lb-info">
         <h2>${this.esc(p.name)}</h2>
         ${p.tagline?`<p class="lb-tag">${this.esc(p.tagline)}</p>`:''}

@@ -1,0 +1,16 @@
+{
+  "outputDirectory": "public",
+  "cleanUrls": false,
+  "redirects": [
+    {
+      "source": "/admin",
+      "destination": "https://bitachonjudaica.com/admin",
+      "permanent": false
+    },
+    {
+      "source": "/admin.html",
+      "destination": "https://bitachonjudaica.com/admin",
+      "permanent": false
+    }
+  ]
+}

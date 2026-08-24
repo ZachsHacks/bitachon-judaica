@@ -60,8 +60,12 @@ function authed(req) {
   const a = Buffer.from(m[1]), b = Buffer.from(TOKEN);
   return a.length === b.length && crypto.timingSafeEqual(a, b);
 }
-function json(res, code, obj) {
-  res.writeHead(code, { "Content-Type": "application/json; charset=utf-8", "Cache-Control": "no-store" });
+function json(res, code, obj, cors) {
+  const h = { "Content-Type": "application/json; charset=utf-8", "Cache-Control": "no-store" };
+  // Public catalog reads are readable from anywhere so design previews (Vercel, localhost)
+  // can show the real products. Never set this on the authed routes.
+  if (cors) h["Access-Control-Allow-Origin"] = "*";
+  res.writeHead(code, h);
   res.end(JSON.stringify(obj));
 }
 function readBody(req, cb) {
@@ -114,8 +118,8 @@ const server = http.createServer((req, res) => {
 
   if (url.startsWith("/api/")) {
     // ---- public reads ----
-    if (url === "/api/products" && req.method === "GET") return json(res, 200, readProducts());
-    if (url === "/api/config" && req.method === "GET") return json(res, 200, readConfig());
+    if (url === "/api/products" && req.method === "GET") return json(res, 200, readProducts(), true);
+    if (url === "/api/config" && req.method === "GET") return json(res, 200, readConfig(), true);
     if (url === "/api/session" && req.method === "GET") return json(res, 200, { authed: authed(req) });
     // ---- auth ----
     if (url === "/api/login" && req.method === "POST") return readBody(req, body => {

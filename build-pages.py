@@ -16,6 +16,9 @@ HEAD = """<!doctype html>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Playfair+Display:wght@500;600&family=Jost:wght@300;400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/site.css">
+<script>/* On the live site read our own API. Anywhere else (Vercel preview, localhost) read the
+live API so previews show the real products. */
+window.BJ_API=/(^|\\.)bitachonjudaica\\.com$/.test(location.hostname)?"":"https://bitachonjudaica.com";</script>
 </head>
 <body>
 <header>
@@ -123,7 +126,7 @@ about = """
   <p class="center" style="color:#2B5C99;font-family:'Playfair Display',serif;font-size:22px;margin-top:36px">Trust in Hashem.</p>
 </div>
 <div class="btn-row"><a class="btn" href="/shop.html">Explore the Collection</a></div>
-<script>fetch("/api/config").then(function(r){return r.json()}).then(function(c){if(c.about){if(c.about.quote)document.getElementById("about-quote").textContent=c.about.quote;var ps=c.about.paragraphs||[];if(ps.length){document.getElementById("about-body").innerHTML=ps.map(function(p){return "<p>"+p.replace(/&/g,"&amp;").replace(/</g,"&lt;")+"</p>"}).join("")}}}).catch(function(){});</script>
+<script>fetch((window.BJ_API||"")+"/api/config").then(function(r){return r.json()}).then(function(c){if(c.about){if(c.about.quote)document.getElementById("about-quote").textContent=c.about.quote;var ps=c.about.paragraphs||[];if(ps.length){document.getElementById("about-body").innerHTML=ps.map(function(p){return "<p>"+p.replace(/&/g,"&amp;").replace(/</g,"&lt;")+"</p>"}).join("")}}}).catch(function(){});</script>
 """
 page("about.html", "Our Story", about)
 
@@ -155,7 +158,7 @@ page("shipping.html", "Shipping & Returns", ship)
 contact = """
 <div class="page-hero"><span class="ey">Get in Touch</span><h1>Contact</h1><p id="c-intro">We would love to hear from you.</p><div class="divider"></div></div>
 <div id="c-block" class="center" style="max-width:560px;margin:0 auto 6px;color:#3a4452"></div>
-<script>fetch("/api/config").then(function(r){return r.json()}).then(function(c){var ct=c.contact||{};if(ct.intro)document.getElementById("c-intro").textContent=ct.intro;var b="";if(ct.phone)b+='<p style="font-family:\\'Playfair Display\\',serif;font-size:20px"><a style="color:#2B5C99" href="'+(ct.phoneHref||("tel:"+ct.phone))+'">'+ct.phone+"</a></p>";if(ct.subtext)b+="<p>"+ct.subtext+"</p>";document.getElementById("c-block").innerHTML=b;}).catch(function(){});</script>
+<script>fetch((window.BJ_API||"")+"/api/config").then(function(r){return r.json()}).then(function(c){var ct=c.contact||{};if(ct.intro)document.getElementById("c-intro").textContent=ct.intro;var b="";if(ct.phone)b+='<p style="font-family:\\'Playfair Display\\',serif;font-size:20px"><a style="color:#2B5C99" href="'+(ct.phoneHref||("tel:"+ct.phone))+'">'+ct.phone+"</a></p>";if(ct.subtext)b+="<p>"+ct.subtext+"</p>";document.getElementById("c-block").innerHTML=b;}).catch(function(){});</script>
 """ + """
 <form class="form" onsubmit="return false">
   <label>Name</label><input type="text" placeholder="Your name">

@@ -11,6 +11,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Playfair+Display:wght@500;600&family=Jost:wght@300;400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/site.css">
+<script>/* On the live site read our own API. Anywhere else (Vercel preview, localhost) read the
+live API so previews show the real products. */
+window.BJ_API=/(^|\.)bitachonjudaica\.com$/.test(location.hostname)?"":"https://bitachonjudaica.com";</script>
 </head>
 <body>
 <header>
@@ -38,7 +41,7 @@
   <p class="center" style="color:#2B5C99;font-family:'Playfair Display',serif;font-size:22px;margin-top:36px">Trust in Hashem.</p>
 </div>
 <div class="btn-row"><a class="btn" href="/shop.html">Explore the Collection</a></div>
-<script>fetch("/api/config").then(function(r){return r.json()}).then(function(c){if(c.about){if(c.about.quote)document.getElementById("about-quote").textContent=c.about.quote;var ps=c.about.paragraphs||[];if(ps.length){document.getElementById("about-body").innerHTML=ps.map(function(p){return "<p>"+p.replace(/&/g,"&amp;").replace(/</g,"&lt;")+"</p>"}).join("")}}}).catch(function(){});</script>
+<script>fetch((window.BJ_API||"")+"/api/config").then(function(r){return r.json()}).then(function(c){if(c.about){if(c.about.quote)document.getElementById("about-quote").textContent=c.about.quote;var ps=c.about.paragraphs||[];if(ps.length){document.getElementById("about-body").innerHTML=ps.map(function(p){return "<p>"+p.replace(/&/g,"&amp;").replace(/</g,"&lt;")+"</p>"}).join("")}}}).catch(function(){});</script>
 </main>
 <footer>
   <div class="wrap frow">

@@ -83,6 +83,9 @@
   footer nav ul{color:#dbe7fa}
   .fbtm{text-align:center;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#a7c4ee;margin-top:30px}
 </style>
+<script>/* On the live site read our own API. Anywhere else (Vercel preview, localhost) read the
+live API so previews show the real products. */
+window.BJ_API=/(^|\.)bitachonjudaica\.com$/.test(location.hostname)?"":"https://bitachonjudaica.com";</script>
 </head>
 <body>
 <header>
