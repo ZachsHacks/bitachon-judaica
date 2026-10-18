@@ -1,0 +1,33 @@
+# Publishes the design (public/) to the real site whenever main changes.
+# The key is jailed on the server to /opt/bitachon-site/public, write-only, so this can never
+# touch server.js, .env, product data, or anything else on the box. server.js changes still
+# go out through ./deploy.sh from Zach's machine.
+name: Deploy to bitachonjudaica.com
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+concurrency: deploy
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 build-pages.py
+      - name: Upload site
+        env:
+          DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
+          DEPLOY_KNOWN_HOSTS: ${{ secrets.DEPLOY_KNOWN_HOSTS }}
+        run: |
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$DEPLOY_KEY" > ~/.ssh/id_ed25519 && chmod 600 ~/.ssh/id_ed25519
+          printf '%s\n' "$DEPLOY_KNOWN_HOSTS" > ~/.ssh/known_hosts
+          # Product photos live only on the server, never push over them.
+          rsync -az --exclude '/assets/products/' public/ root@srv811922.hstgr.cloud:./
+      - name: Check the site answers
+        run: |
+          for i in 1 2 3 4 5; do
+            [ "$(curl -s -o /dev/null -w '%{http_code}' https://bitachonjudaica.com/shop.html)" = 200 ] && exit 0
+            sleep 3
+          done
+          exit 1

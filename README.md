@@ -11,14 +11,14 @@ Static website for Bitachon Judaica (handcrafted Judaica). Live at https://bitac
 The homepage source is the Option 3 refined-light design (`public/index.html`).
 
 ## Hosting & deploy
-Self-hosted on the Hostinger VPS (NOT Vercel). PM2 app `bitachon-site` runs `server.js`
+Self-hosted on the Hostinger VPS (Vercel is previews only). PM2 app `bitachon-site` runs `server.js`
 on port 3015; Traefik routes the domain with auto Let's Encrypt TLS.
 
-Deploy = rsync the site up (no git push, no restart needed):
-
-```bash
-rsync -az public/ root@srv811922.hstgr.cloud:/opt/bitachon-site/public/
-```
+Deploy:
+- `public/` deploys automatically on every push to `main` (`.github/workflows/deploy.yml`).
+  Its key is jailed on the VPS (`rrsync -wo /opt/bitachon-site/public`), 1Password item
+  "Bitachon Judaica - GitHub deploy key".
+- `server.js` changes: `./deploy.sh` from Zach's machine (uploads and restarts PM2).
 
 ## DNS
 Registered at GoDaddy. `A @ -> 168.231.75.68`; `www` is a CNAME to the apex.
