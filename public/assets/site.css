@@ -211,3 +211,8 @@ header{background:linear-gradient(135deg,#FAF9F4 0%,#fffdf7 70%,#F1EBDD 100%);bo
  .logo-img{height:58px;margin-top:3px}
  .brand-tagline{font-size:22px}
 }
+
+/* An elegant signature treatment for the shopping tagline. */
+.brand-tagline{font-family:"Playfair Display",Georgia,serif;font-style:italic;letter-spacing:.015em;color:#2B5C99;padding-top:12px}
+.brand-tagline::before{content:"";display:block;width:72px;height:1px;background:#B8923D;margin-bottom:14px}
+.brand-meaning{color:#6b6458}
