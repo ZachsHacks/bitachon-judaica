@@ -14,6 +14,7 @@
 <script>/* On the live site read our own API. Anywhere else (Vercel preview, localhost) read the
 live API so previews show the real products. */
 window.BJ_API=/(^|\.)bitachonjudaica\.com$/.test(location.hostname)?"":"https://bitachonjudaica.com";</script>
+<script src="/assets/cart.js" defer></script>
 </head>
 <body>
 <header>
@@ -22,7 +23,7 @@ window.BJ_API=/(^|\.)bitachonjudaica\.com$/.test(location.hostname)?"":"https://
     <nav><ul>
       <li><a href="/about.html">About</a></li>
     </ul></nav>
-    <div class="icons">Cart (0)</div>
+    <a class="icons cart-link" href="/cart.html">Cart (<span data-cart-count>0</span>)</a>
   </div>
 </header>
 <main>

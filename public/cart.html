@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Your cart | Bitachon Judaica</title>
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Playfair+Display:wght@500;600&family=Jost:wght@300;400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<script>/* On the live site read our own API. Anywhere else (Vercel preview, localhost) read the
+live API so previews show the real products. */
+window.BJ_API=/(^|\.)bitachonjudaica\.com$/.test(location.hostname)?"":"https://bitachonjudaica.com";</script>
+<script src="/assets/cart.js" defer></script>
+</head>
+<body>
+<header>
+  <div class="topbar">
+    <a href="/" class="logo brand"><img class="logo-img" src="/assets/logo.png" alt="Bitachon Judaica"><span><span class="brand-text">Bitachon Judaica</span><span class="brand-sub">Trust in Hashem</span></span></a>
+    <nav><ul>
+      <li><a href="/about.html">About</a></li>
+    </ul></nav>
+    <a class="icons cart-link" href="/cart.html">Cart (<span data-cart-count>0</span>)</a>
+  </div>
+</header>
+<main>
+
+<div class="wrap cart-page">
+  <p class="ey">A little something meaningful</p>
+  <h1>Your shopping cart</h1>
+  <p class="cart-intro">Gather your favorites, then call us to place your order.</p>
+  <div id="cart-content" aria-live="polite"></div>
+  <noscript>Please enable JavaScript to use your cart, or call (224) 645-2752 to order.</noscript>
+</div>
+</main>
+<footer>
+  <div class="wrap frow">
+    <div class="flogo">BITACHON JUDAICA</div>
+    <nav><ul style="display:flex;gap:30px;list-style:none;font-size:12px;letter-spacing:.18em;text-transform:uppercase">
+      <li><a href="/shop.html">Shop</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/bulk.html">Bulk Orders</a></li>
+      <li><a href="/shipping.html">Shipping</a></li>
+      <li><a href="/contact.html">Contact</a></li>
+    </ul></nav>
+  </div>
+  <div class="wrap fbtm">Copyright 2026 Bitachon Judaica</div>
+</footer>
+</body>
+</html>

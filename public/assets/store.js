@@ -133,8 +133,9 @@ window.BJStore = {
         ${p.price?`<div class="lb-price">${this.esc(p.price)}</div>`:''}
         ${p.description?`<p class="lb-desc">${this.esc(p.description)}</p>`:''}
         ${tags?`<div class="chips">${tags}</div>`:''}
-        <a class="lb-inquire" href="mailto:${this.EMAIL}?subject=${subject}">Email us to order</a>
+        <button type="button" class="lb-inquire" id="add-to-cart">Add to cart</button><a class="phone-order" href="tel:+12246452752">Questions? Call (224) 645-2752</a>
       </div></div>`;
+    box.querySelector('#add-to-cart').onclick=()=>{ if(window.BJCart){ BJCart.add(p); box.querySelector('#add-to-cart').textContent='Added to cart'; } };
     box.style.display='flex'; document.body.style.overflow='hidden';
     const close=()=>{box.style.display='none';document.body.style.overflow='';};
     box.querySelector('.lb-back').onclick=close; box.querySelector('.lb-x').onclick=close;
@@ -152,3 +153,4 @@ window.addEventListener('keydown', e => {
   const box = document.getElementById('bj-lb');
   if (box && box.style.display === 'flex') { box.style.display = 'none'; document.body.style.overflow = ''; }
 });
+
