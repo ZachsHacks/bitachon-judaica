@@ -24,7 +24,7 @@ window.BJ_API=/(^|\\.)bitachonjudaica\\.com$/.test(location.hostname)?"":"https:
 <body>\n<div role="status" style="background:#2B5C99;color:#FAF9F4;text-align:center;padding:12px 20px;font-size:15px;line-height:1.5">This site is under construction until further notice.</div>
 <header>
   <div class="topbar">
-    <a href="/" class="logo brand"><img class="logo-img" src="/assets/logo.png" alt="Bitachon Judaica"><span><span class="brand-text">Bitachon Judaica</span><span class="brand-tagline">The complete Jewish shopping destination.</span><span class="brand-promise">If you know what you want, you\'ll find it here.</span></span></a>
+    <a href="/" class="logo brand"><img class="logo-img" src="/assets/logo.png" alt="Bitachon Judaica"><span><span class="brand-text">Bitachon Judaica</span><span class="brand-tagline">A complete Jewish shopping destination.</span><span class="brand-promise">If you know what you want but can\'t find it elsewhere, tell us.</span></span></a>
     <nav><ul>
       <li><a href="/about.html">About</a></li>
     </ul></nav>
@@ -109,7 +109,7 @@ BJStore.renderCats("catnav", null);
 BJStore.render("products", null, true);
 </script>
 """
-page("index.html", "Home", home, full_title="Bitachon Judaica, Judaica and Gifts")
+page("index.html", "Home", home, full_title="Bitachon Judaica Storefront")
 
 # The old "made one piece at a time" line is gone on purpose: it is not true of the shirts,
 # sheitels, baby gifts, or anything ordered in, only of the clay work.
