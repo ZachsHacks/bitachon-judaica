@@ -7,7 +7,7 @@ window.BJCart = {
     this.render();
   },
   save(){try{localStorage.setItem(this.key,JSON.stringify(this.items));}catch{}this.render();},
-  add(p){const id=String(p.id||p.name);let item=this.items.find(x=>x.id===id);if(item)item.qty=Math.min(99,item.qty+1);else this.items.push({id,name:p.name,price:p.price||'',image:(p.images||[])[0]||'',qty:1});this.save();},
+  add(p,quantity=1){quantity=Math.max(1,Math.min(20,Math.floor(Number(quantity)||1)));const id=String(p.id||p.name);let item=this.items.find(x=>x.id===id);if(item)item.qty=Math.min(99,item.qty+quantity);else this.items.push({id,name:p.name,price:p.price||'',image:(p.images||[])[0]||'',qty:quantity});this.save();},
   money(n){return new Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(n);},
   price(s){const m=String(s).trim().match(/^\$?\s*(\d+(?:,\d{3})*(?:\.\d{1,2})?)$/);return m?Math.round(Number(m[1].replace(/,/g,''))*100):null;},
   render(){
@@ -26,3 +26,4 @@ window.BJCart = {
   }
 };
 document.addEventListener('DOMContentLoaded',()=>BJCart.init());
+

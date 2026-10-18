@@ -21,13 +21,26 @@ window.BJStore = {
   renderSearch(id){
     const el = document.getElementById(id); if(!el) return;
     el.innerHTML = `<div class="searchbox">
-      <input id="bj-q" type="search" placeholder="Search everything" autocomplete="off" value="${this.esc(this._q)}">
+      <input id="bj-q" type="search" placeholder="Search everything" autocomplete="off" list="bj-search-suggestions" aria-label="Search products" value="${this.esc(this._q)}">
       <button type="button" id="bj-qx" aria-label="Clear search">&times;</button>
-    </div><div class="searchnote" id="bj-qnote"></div>`;
+    </div><datalist id="bj-search-suggestions"></datalist><div class="search-hints" id="bj-search-hints" aria-label="Popular searches"></div><div class="searchnote" id="bj-qnote" aria-live="polite"></div>`;
+    this.searchHints();
     const input = document.getElementById('bj-q');
     let t;
     input.oninput = () => { clearTimeout(t); t = setTimeout(() => { this._q = input.value.trim(); this.render(this._pid, this._cat, true); }, 150); };
     document.getElementById('bj-qx').onclick = () => { input.value=''; this._q=''; this.render(this._pid, this._cat, true); input.focus(); };
+  },
+
+  async searchHints(){
+    const all=await this._products();
+    const live=(all||[]).filter(p=>p.available!==false);
+    const words=[...new Set(live.flatMap(p=>[p.name,...(p.categories||[])]).filter(Boolean))];
+    const list=document.getElementById('bj-search-suggestions');
+    if(list)list.innerHTML=words.slice(0,200).map(w=>`<option value="${this.esc(w)}"></option>`).join('');
+    const hints=['Mezuzah','Baby','Shirts','Jewish art','Gifts'].filter(w=>live.some(p=>this._match(p,w)));
+    const el=document.getElementById('bj-search-hints');if(!el)return;
+    el.innerHTML='<span>Try:</span>'+hints.map(w=>`<button type="button">${this.esc(w)}</button>`).join('');
+    el.querySelectorAll('button').forEach(b=>b.onclick=()=>{this._q=b.textContent;const input=document.getElementById('bj-q');if(input)input.value=this._q;this.render(this._pid,this._cat,true);});
   },
 
   card(p, i){
@@ -43,10 +56,11 @@ window.BJStore = {
     // Bumper stickers are long and thin, so they get a full row instead of being a stamp in a square.
     // ponytail: keyed off the category name; switch to a per-product flag if other wide items appear.
     const wide = (p.categories || []).includes('Bumper Stickers') ? ' wide' : '';
-    return `<div class="cat prod${wide}" data-i="${i}">${img}${more}<h3>${this.esc(p.name)}</h3>${price}${sub}${desc}${tags?`<div class="chips">${tags}</div>`:''}</div>`;
+    return `<div class="cat prod${wide}" data-i="${i}">${img}${more}<h3>${this.esc(p.name)}</h3>${price}${sub}${desc}${tags?`<div class="chips">${tags}</div>`:''}<div class="card-order"><label>Quantity <select aria-label="Quantity for ${this.esc(p.name)}">${Array.from({length:20},(_,n)=>`<option>${n+1}</option>`).join('')}</select></label><button type="button" class="card-add">Add to cart</button><a href="/cart.html" class="card-cart" hidden>View cart</a></div></div>`;
   },
 
   async render(id, category, keepScroll){
+    const key=String(category||'')+'|'+this._q;if(this._resultKey!==key){this._shown=24;this._resultKey=key;}
     this._pid = id; this._cat = category || null;
     const el = document.getElementById(id); if(!el) return;
     const all = await this._products();
@@ -56,9 +70,17 @@ window.BJStore = {
       this._match(p, this._q));
     this._list = list;
     el.innerHTML = list.length
-      ? list.map((p,i) => this.card(p,i)).join('')
+      ? list.slice(0,this._shown||24).map((p,i) => this.card(p,i)).join('')
       : `<p class="empty">${this._q ? 'Nothing matched "'+this.esc(this._q)+'". Try a different word.' : 'New pieces coming soon.'}</p>`;
-    el.querySelectorAll('.prod').forEach(c => c.onclick = () => this.open(list[+c.dataset.i]));
+    el.querySelectorAll('.prod').forEach(c => {
+      const p=list[+c.dataset.i];
+      c.onclick=()=>this.open(p);
+      const controls=c.querySelector('.card-order');
+      if(controls){controls.onclick=e=>e.stopPropagation();controls.querySelector('.card-add').onclick=e=>{e.stopPropagation();if(!window.BJCart)return;BJCart.add(p,Number(controls.querySelector('select').value));e.currentTarget.textContent='Added to cart';controls.querySelector('.card-cart').hidden=false;};}
+    });
+    if(list.length>(this._shown||24)){
+      const more=document.createElement('button');more.type='button';more.className='shop-more';more.textContent='Show more items';more.onclick=()=>{this._shown=(this._shown||24)+24;this.render(id,category,true);};el.appendChild(more);
+    }
     const note = document.getElementById('bj-qnote');
     if (note) note.textContent = this._q ? `${list.length} ${list.length===1?'result':'results'}` : '';
     if (!keepScroll) window.scrollTo({ top: 0 });
@@ -153,4 +175,5 @@ window.addEventListener('keydown', e => {
   const box = document.getElementById('bj-lb');
   if (box && box.style.display === 'flex') { box.style.display = 'none'; document.body.style.overflow = ''; }
 });
+
 
