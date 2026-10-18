@@ -24,7 +24,7 @@ window.BJ_API=/(^|\\.)bitachonjudaica\\.com$/.test(location.hostname)?"":"https:
 <body>\n<div role="status" style="background:#2B5C99;color:#FAF9F4;text-align:center;padding:12px 20px;font-size:15px;line-height:1.5">This site is under construction until further notice.</div>
 <header>
   <div class="topbar">
-    <a href="/" class="logo brand"><img class="logo-img" src="/assets/logo.png" alt="Bitachon Judaica"><span><span class="brand-text">Bitachon Judaica</span><span class="brand-sub">Trust in Hashem</span></span></a>
+    <a href="/" class="logo brand"><img class="logo-img" src="/assets/logo.png" alt="Bitachon Judaica"><span><span class="brand-text">Bitachon Judaica</span><span class="brand-tagline">The complete Jewish shopping destination.</span><span class="brand-promise">If you know what you want, you\'ll find it here.</span></span></a>
     <nav><ul>
       <li><a href="/about.html">About</a></li>
     </ul></nav>
@@ -243,4 +243,5 @@ page("cart.html", "Your cart", """
   <noscript>Please enable JavaScript to use your cart, or call (224) 645-2752 to order.</noscript>
 </div>
 """)
+
 

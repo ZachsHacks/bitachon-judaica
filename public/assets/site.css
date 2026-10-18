@@ -178,3 +178,9 @@ button.lb-inquire{font-family:inherit;border:0;cursor:pointer;border-radius:6px;
 .phone-order{display:block;color:var(--navy);font-size:15px;margin-top:14px}
 a:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid var(--gold);outline-offset:4px}
 @media(max-width:820px){.cart-layout{grid-template-columns:1fr}.cart-summary{position:static}.cart-page{padding:32px 20px 60px}.cart-page h1{font-size:32px}.cart-item{grid-template-columns:80px minmax(0,1fr);gap:16px}.cart-photo{height:80px}.cart-line-total{grid-column:2}.cart-details h2{font-size:20px}.cart-link{padding:6px 10px}.topbar{flex-wrap:wrap}.cart-controls{gap:12px}}
+
+.brand-tagline,.brand-promise{display:block;font-family:"Jost",sans-serif;white-space:normal;letter-spacing:.02em;line-height:1.5;text-transform:none}
+.brand-tagline{font-size:17px;color:var(--navy);margin-top:10px}
+.brand-promise{font-size:15px;color:var(--soft);margin-top:3px}
+@media(max-width:820px){.topbar{flex-wrap:wrap}.brand{min-width:0;max-width:100%}.brand>span{min-width:0}.brand-tagline{font-size:14px}.brand-promise{font-size:13px}.brand-text{white-space:normal}}
+
