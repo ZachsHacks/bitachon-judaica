@@ -19,6 +19,7 @@ HEAD = """<!doctype html>
 <script>/* On the live site read our own API. Anywhere else (Vercel preview, localhost) read the
 live API so previews show the real products. */
 window.BJ_API=/(^|\\.)bitachonjudaica\\.com$/.test(location.hostname)?"":"https://bitachonjudaica.com";</script>
+<script src="/assets/cart.js" defer></script>
 </head>
 <body>
 <header>
@@ -27,7 +28,7 @@ window.BJ_API=/(^|\\.)bitachonjudaica\\.com$/.test(location.hostname)?"":"https:
     <nav><ul>
       <li><a href="/about.html">About</a></li>
     </ul></nav>
-    <div class="icons">Cart (0)</div>
+    <a class="icons cart-link" href="/cart.html">Cart (<span data-cart-count>0</span>)</a>
   </div>
 </header>
 <main>
@@ -231,3 +232,14 @@ document.getElementById("cform").addEventListener("submit", function(e){
 page("contact.html", "Contact", contact)
 
 print("done")
+
+
+page("cart.html", "Your cart", """
+<div class="wrap cart-page">
+  <p class="ey">A little something meaningful</p>
+  <h1>Your shopping cart</h1>
+  <p class="cart-intro">Gather your favorites, then call us to place your order.</p>
+  <div id="cart-content" aria-live="polite"></div>
+  <noscript>Please enable JavaScript to use your cart, or call (224) 645-2752 to order.</noscript>
+</div>
+""")
