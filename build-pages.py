@@ -25,8 +25,10 @@ window.BJ_API=/(^|\\.)bitachonjudaica\\.com$/.test(location.hostname)?"":"https:
 <header>
   <div class="topbar">
     <a href="/" class="logo brand"><img class="logo-img" src="/assets/logo.png" alt="Bitachon Judaica"><span><span class="brand-text">Bitachon Judaica</span><span class="brand-meaning" style="display:block;font-size:12px;line-height:1.5;margin-top:8px;color:#5a626d">Bitachon means trust in Hashem</span><span class="brand-promise">Know what you want but can\'t find it? Tell us.</span></span></a>
-    <nav><ul>
+    <nav aria-label="Main navigation"><ul>
+      <li><a href="/shop.html">Shop</a></li>
       <li><a href="/about.html">About</a></li>
+      <li><a href="/contact.html">Contact</a></li>
     </ul></nav>
     <a class="icons cart-link" href="/cart.html">Cart (<span data-cart-count>0</span>)</a>
   </div>
@@ -82,21 +84,21 @@ def band(ey, h2, href, label):
 # ---- Shop (all products + dynamic category nav) ----
 # ---- Homepage: a storefront, not a splash page. Everything she sells is visible right away. ----
 home = """
-<section class="store-welcome"><div class="wrap"><h1>A complete Jewish shopping destination.</h1><p>Know what you want but can\'t find it? Tell us.</p></div></section>\n<div class="home-hero">
+<section class="store-welcome"><div class="wrap"><h1>A Complete Jewish Shopping Destination</h1><p>Know what you want but can\'t find it? Tell us.</p></div></section>\n<div class="home-hero">
   <div class="wrap">
     <p class="home-kicker">Mezuzah covers, gifts, apparel, sheitels, and Jewish art.</p>
     <div id="search" class="searchwrap"></div>
   </div>
 </div>
-<section style="padding-top:6px">
+<section class="category-section">
   <div class="wrap">
     <h2 class="sec-title">Shop by category</h2>
     <div id="tiles" class="tiles"></div>
   </div>
 </section>
-<section style="padding-top:14px">
+<section class="catalog-section">
   <div class="wrap">
-    <h2 class="sec-title">Everything in the shop</h2>
+    <div class="catalog-heading"><h2 class="sec-title">Everything in the shop</h2><span>Choose an item to see details and order</span></div>
     <nav id="catnav" class="catnav"></nav>
     <div id="products" class="cats"></div>
   </div>
@@ -243,6 +245,7 @@ page("cart.html", "Your cart", """
   <noscript>Please enable JavaScript to use your cart, or call (224) 645-2752 to order.</noscript>
 </div>
 """)
+
 
 
 

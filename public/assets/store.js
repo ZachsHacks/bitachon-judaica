@@ -21,9 +21,9 @@ window.BJStore = {
   renderSearch(id){
     const el = document.getElementById(id); if(!el) return;
     el.innerHTML = `<div class="searchbox">
-      <input id="bj-q" type="search" placeholder="SEARCH" aria-label="Search products" autocomplete="off" value="${this.esc(this._q)}">
+      <input id="bj-q" type="search" placeholder="Search the shop" aria-label="Search products" autocomplete="off" value="${this.esc(this._q)}">
       <button type="button" id="bj-qx" aria-label="Clear search">&times;</button>
-    </div><div class="searchnote" id="bj-qnote"></div>`;
+    </div><div class="searchnote" id="bj-qnote" role="status" aria-live="polite"></div>`;
     const input = document.getElementById('bj-q');
     let t;
     input.oninput = () => { clearTimeout(t); t = setTimeout(() => { this._q = input.value.trim(); this.render(this._pid, this._cat, true); }, 150); };
@@ -39,11 +39,11 @@ window.BJStore = {
     const sub = p.tagline ? `<p class="cdesc">${this.esc(p.tagline)}</p>` : '';
     // Show the description on the card. She was clear that nobody will click to find out what something is.
     const desc = p.description ? `<p class="cbody">${this.esc(p.description)}</p>` : '';
-    const price = p.price ? `<div class="cprice">${this.esc(p.price)}</div>` : '';
+    const price = `<div class="cprice${p.price?'':' price-note'}">${this.esc(p.price || 'Ask us for pricing')}</div>`;
     // Bumper stickers are long and thin, so they get a full row instead of being a stamp in a square.
     // ponytail: keyed off the category name; switch to a per-product flag if other wide items appear.
     const wide = (p.categories || []).includes('Bumper Stickers') ? ' wide' : '';
-    return `<div class="cat prod${wide}" data-i="${i}">${img}${more}<h3>${this.esc(p.name)}</h3>${price}${sub}${desc}${tags?`<div class="chips">${tags}</div>`:''}</div>`;
+    return `<div class="cat prod${wide}" data-i="${i}">${img}${more}<h3>${this.esc(p.name)}</h3>${price}${sub}${desc}${tags?`<div class="chips">${tags}</div>`:''}<button class="product-details" type="button" aria-label="View ${this.esc(p.name)}">View details <span aria-hidden="true">&rarr;</span></button></div>`;
   },
 
   async render(id, category, keepScroll){
@@ -60,7 +60,7 @@ window.BJStore = {
       : `<p class="empty">${this._q ? 'Nothing matched "'+this.esc(this._q)+'". Try a different word.' : 'New pieces coming soon.'}</p>`;
     el.querySelectorAll('.prod').forEach(c => c.onclick = () => this.open(list[+c.dataset.i]));
     const note = document.getElementById('bj-qnote');
-    if (note) note.textContent = this._q ? `${list.length} ${list.length===1?'result':'results'}` : '';
+    if (note) note.textContent = this._q ? `${list.length} ${list.length===1?'result':'results'}` : `${list.length} products to explore`;
     if (!keepScroll) window.scrollTo({ top: 0 });
   },
 
@@ -133,7 +133,7 @@ window.BJStore = {
         ${p.price?`<div class="lb-price">${this.esc(p.price)}</div>`:''}
         ${p.description?`<p class="lb-desc">${this.esc(p.description)}</p>`:''}
         ${tags?`<div class="chips">${tags}</div>`:''}
-        <button type="button" class="lb-inquire" id="add-to-cart">Add to cart</button><a class="phone-order" href="tel:+12246452752">Questions? Call (224) 645-2752</a>
+        <button type="button" class="lb-inquire lb-inquire-button" id="add-to-cart">Add to cart</button><a class="phone-order" href="tel:+12246452752">Questions? Call (224) 645-2752</a>
       </div></div>`;
     box.querySelector('#add-to-cart').onclick=()=>{ if(window.BJCart){ BJCart.add(p); box.querySelector('#add-to-cart').textContent='Added to cart'; } };
     box.style.display='flex'; document.body.style.overflow='hidden';
@@ -153,4 +153,5 @@ window.addEventListener('keydown', e => {
   const box = document.getElementById('bj-lb');
   if (box && box.style.display === 'flex') { box.style.display = 'none'; document.body.style.overflow = ''; }
 });
+
 
