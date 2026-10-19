@@ -283,3 +283,8 @@ footer nav ul{flex-wrap:wrap}footer .frow{gap:24px}
 .store-welcome h1::before{content:"";display:block;width:96px;height:1px;background:#B8923D;margin:0 auto 22px}
 .store-welcome p{color:#65594b;margin-top:20px}.home-hero{background:#f1e7d8}
 @media(max-width:520px){.store-welcome{padding:30px 0 22px}.store-welcome h1{font-size:39px}.store-welcome h1::before{margin-bottom:18px}}
+
+/* Restore the centered pink search requested by the owner. */
+.searchbox{border:1px solid #d8d2c4;border-radius:30px;padding:4px 0}
+.searchbox input{font-size:24px;text-align:center;padding:12px 52px}
+.searchbox input::placeholder{font-size:24px;font-weight:400;letter-spacing:.12em;color:#C2185B;opacity:1}
