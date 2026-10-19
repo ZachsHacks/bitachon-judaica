@@ -21,7 +21,7 @@ window.BJStore = {
   renderSearch(id){
     const el = document.getElementById(id); if(!el) return;
     el.innerHTML = `<div class="searchbox">
-      <input id="bj-q" type="search" placeholder="Search everything" autocomplete="off" value="${this.esc(this._q)}">
+      <input id="bj-q" type="search" placeholder="SEARCH" aria-label="Search products" autocomplete="off" value="${this.esc(this._q)}">
       <button type="button" id="bj-qx" aria-label="Clear search">&times;</button>
     </div><div class="searchnote" id="bj-qnote"></div>`;
     const input = document.getElementById('bj-q');
