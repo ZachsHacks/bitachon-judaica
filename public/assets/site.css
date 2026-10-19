@@ -308,3 +308,8 @@ footer nav ul{flex-wrap:wrap}footer .frow{gap:24px}
 
 
 .topbar .brand{align-items:center}
+
+/* Enlarge the seal so the lettering around it is clearly readable. */
+.topbar .logo-img{height:240px;width:240px;object-fit:contain}
+.topbar .brand{flex-direction:column;gap:22px}
+@media(max-width:720px){.topbar .logo-img{height:240px;width:240px}}
