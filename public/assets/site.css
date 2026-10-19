@@ -288,3 +288,7 @@ footer nav ul{flex-wrap:wrap}footer .frow{gap:24px}
 .searchbox{border:1px solid #d8d2c4;border-radius:30px;padding:4px 0}
 .searchbox input{font-size:24px;text-align:center;padding:12px 52px}
 .searchbox input::placeholder{font-size:24px;font-weight:400;letter-spacing:.12em;color:#C2185B;opacity:1}
+
+/* Keep the area above search free of the product summary. */
+.home-kicker{display:none}
+.home-hero{padding-top:16px}
