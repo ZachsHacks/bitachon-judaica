@@ -320,6 +320,9 @@ footer nav ul{flex-wrap:wrap}footer .frow{gap:24px}
 .brand-destination{font-size:clamp(14px,3.8vw,46px);white-space:nowrap;letter-spacing:-.02em;max-width:none}
 .topbar .brand>span{width:100%;min-width:0}
 
-/* Remove the small Shop, About, Contact row from the header. */
-.topbar>nav{display:none}
-.topbar>.cart-link{grid-column:2;justify-self:end}
+/* Keep navigation and the cart together at the top right. */
+.topbar>.brand{grid-row:2}
+.topbar>nav{display:block;grid-row:1;grid-column:1;justify-self:end;margin:0}
+.topbar>.cart-link{grid-row:1;grid-column:2;justify-self:end}
+.topbar>nav ul{gap:20px;align-items:center}
+@media(max-width:520px){.topbar{column-gap:12px}.topbar>nav ul{gap:14px;font-size:13px}.topbar>.cart-link{padding:8px 12px}}
