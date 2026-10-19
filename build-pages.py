@@ -82,7 +82,7 @@ def band(ey, h2, href, label):
 # ---- Shop (all products + dynamic category nav) ----
 # ---- Homepage: a storefront, not a splash page. Everything she sells is visible right away. ----
 home = """
-<section class="store-welcome"><div class="wrap"><h1>A complete Jewish shopping destination.</h1><p>Know what you want but can\'t find it? Tell us.</p><a class="btn" href="/shop.html">Shop all products</a></div></section>\n<div class="home-hero">
+<section class="store-welcome"><div class="wrap"><h1>A complete Jewish shopping destination.</h1><p>Know what you want but can\'t find it? Tell us.</p></div></section>\n<div class="home-hero">
   <div class="wrap">
     <p class="home-kicker">Mezuzah covers, gifts, apparel, sheitels, and Jewish art.</p>
     <div id="search" class="searchwrap"></div>
