@@ -92,7 +92,7 @@ section{padding:20px 0 90px}
 .searchwrap{max-width:640px;margin:0 auto 26px}
 .searchbox{position:relative;display:flex;align-items:center;border:1px solid #d8d2c4;background:#fff;border-radius:30px;padding:4px 0}
 .searchbox input{flex:1;min-width:0;width:100%;border:0;outline:none;background:transparent;font-family:"Jost";font-size:24px;text-align:center;padding:12px 52px;color:var(--ink)}
-.searchbox input::placeholder{font-size:24px;font-weight:400;letter-spacing:.12em;color:var(--navy);opacity:1}
+.searchbox input::placeholder{font-size:24px;font-weight:400;letter-spacing:.12em;color:#C2185B;opacity:1}
 .searchbox input::-webkit-search-cancel-button{display:none}
 .searchbox button{position:absolute;right:8px;border:0;background:transparent;color:var(--soft);font-size:24px;line-height:1;cursor:pointer;padding:10px 12px}
 .searchbox button:hover{color:var(--navy)}
