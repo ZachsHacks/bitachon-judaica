@@ -319,3 +319,7 @@ footer nav ul{flex-wrap:wrap}footer .frow{gap:24px}
 .brand .brand-text{font-size:clamp(30px,4.2vw,58px)}
 .brand-destination{font-size:clamp(14px,3.8vw,46px);white-space:nowrap;letter-spacing:-.02em;max-width:none}
 .topbar .brand>span{width:100%;min-width:0}
+
+/* Remove the small Shop, About, Contact row from the header. */
+.topbar>nav{display:none}
+.topbar>.cart-link{grid-column:2;justify-self:end}
