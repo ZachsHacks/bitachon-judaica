@@ -95,13 +95,13 @@ home = """
 <section class="gift-discovery" aria-labelledby="gift-discovery-title">
   <div class="wrap">
     <h2 id="gift-discovery-title">Find a gift that feels personal</h2>
-    <p>Explore unique finds from independent sellers on Etsy.</p>
-    <nav class="gift-buttons" aria-label="Explore gifts on Etsy">
-      <a href="https://www.etsy.com/market/unique_gifts?max=25" rel="external">Unique Gifts Under $25 <span aria-hidden="true">&#8599;</span></a>
-      <a href="https://www.etsy.com/c/gifts/personalized-gifts" rel="external">Personalized Gifts <span aria-hidden="true">&#8599;</span></a>
-      <a href="https://www.etsy.com/market/jewish_gifts" rel="external">Jewish Gifts <span aria-hidden="true">&#8599;</span></a>
+    <p>Explore unique finds and thoughtful gifts on Amazon.</p>
+    <nav class="gift-buttons" aria-label="Explore gifts on Amazon">
+      <a href="https://www.amazon.com/s?k=unique+gifts&amp;rh=p_36%3A-2500&amp;linkCode=ll2&amp;tag=bitachonjudai-20&amp;linkId=cb5855fb0f71fce89bed054db772c014&amp;language=en_US&amp;ref_=as_li_ss_tl" rel="sponsored external">Unique Gifts Under $25 <span aria-hidden="true">&#8599;</span></a>
+      <a href="https://www.amazon.com/s?k=personalized+gifts&amp;tag=bitachonjudai-20" rel="sponsored external">Personalized Gifts <span aria-hidden="true">&#8599;</span></a>
+      <a href="https://www.amazon.com/s?k=jewish+gifts&amp;tag=bitachonjudai-20" rel="sponsored external">Jewish Gifts <span aria-hidden="true">&#8599;</span></a>
     </nav>
-    <p class="gift-shopping-note">These links take you to Etsy, where you complete your purchase. Prices and availability may change. The $25 limit is before shipping, taxes, and personalization extras.</p>
+    <p class="gift-shopping-note"><strong>As an Amazon Associate I earn from qualifying purchases.</strong></p>\n    <p class="gift-shopping-note">These links take you to Amazon, where you complete your purchase. Prices and availability may change. The $25 limit is before shipping, taxes, and personalization extras.</p>
   </div>
 </section>
 <section class="category-section">
