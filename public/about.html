@@ -15,12 +15,14 @@
 live API so previews show the real products. */
 window.BJ_API=/(^|\.)bitachonjudaica\.com$/.test(location.hostname)?"":"https://bitachonjudaica.com";</script>
 <script src="/assets/cart.js" defer></script>
+<link rel="stylesheet" href="/assets/music.css">
+<script src="/assets/music.js" defer></script>
 </head>
 <body>
 
 <header>
   <div class="topbar">
-    <a href="/" class="logo brand"><img class="logo-img" src="/assets/logo.png" alt="Bitachon Judaica"><span><span class="brand-text">Bitachon Judaica</span><span class="brand-destination">The Complete Jewish Shopping Destination</span><span class="brand-meaning" style="display:block;font-size:12px;line-height:1.5;margin-top:8px;color:#5a626d">Bitachon means trust in Hashem</span><span class="brand-promise">Know what you want but can't find it? Tell us.</span></span></a>
+    <a href="/" class="logo brand"><img class="logo-img" src="/assets/logo.png" alt="Bitachon Judaica"><span><span class="brand-text">Bitachon Judaica</span><span class="brand-destination">The Complete Jewish Shopping Destination</span><span style="display:block;font-family:Jost,sans-serif;font-size:14px;line-height:1.5;font-weight:400;letter-spacing:.08em;color:#B8923D;margin-top:10px">Trust in Hashem</span><span class="brand-meaning" style="display:block;font-size:12px;line-height:1.5;margin-top:8px;color:#5a626d">Bitachon means trust in Hashem</span><span class="brand-promise">Know what you want but can't find it? Tell us.</span></span></a>
     <div class="header-links"><nav aria-label="Main navigation"><ul>
       <li><a href="/shop.html">Shop</a></li>
       <li><a href="/about.html">About</a></li>
@@ -31,18 +33,6 @@ window.BJ_API=/(^|\.)bitachonjudaica\.com$/.test(location.hostname)?"":"https://
 </header>
 <main>
 
-<div class="letterhead">
-  <img class="lh-seal" src="/assets/logo.png" alt="">
-  <h1 class="lh-name">Bitachon Judaica</h1>
-  <div class="lh-tag">Trust in Hashem</div>
-  <div class="lh-rule"></div>
-  <div class="lh-lines">
-    <a href="https://www.bitachonjudaica.com">www.bitachonjudaica.com</a>
-    <a href="https://www.madeinheavenmezuzahs.com">www.madeinheavenmezuzahs.com</a>
-    <span id="lh-phone"></span>
-    <a id="lh-email" href="mailto:bitachonjudaica@gmail.com">bitachonjudaica@gmail.com</a>
-  </div>
-</div>
 <div class="page-hero" style="padding-top:26px"><span class="ey">Our Story</span><h1 id="about-quote">It began on my mirror</h1><div class="divider"></div></div>
 <div class="prose">
   <div id="about-body">
@@ -60,7 +50,6 @@ window.BJ_API=/(^|\.)bitachonjudaica\.com$/.test(location.hostname)?"":"https://
   if(a.quote && a.quote.indexOf("www.")===-1) document.getElementById("about-quote").textContent=a.quote;
   var ps=a.paragraphs||[];
   if(ps.length){document.getElementById("about-body").innerHTML=ps.map(function(p){return "<p>"+p.replace(/&/g,"&amp;").replace(/</g,"&lt;")+"</p>"}).join("")}
-  if(ct.phone){var e=document.getElementById("lh-phone");e.innerHTML='<a href="'+(/^tel:/.test(ct.phoneHref||"")?ct.phoneHref:"tel:"+String(ct.phone).replace(/[^0-9+]/g,""))+'">'+ct.phone+'</a>';}
 }).catch(function(){});</script>
 </main>
 <footer>
