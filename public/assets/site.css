@@ -319,3 +319,9 @@ footer nav ul{flex-wrap:wrap}footer .frow{gap:24px}
 .brand .brand-text{font-size:clamp(30px,4.2vw,58px)}
 .brand-destination{font-size:clamp(14px,3.8vw,46px);white-space:nowrap;letter-spacing:-.02em;max-width:none}
 .topbar .brand>span{width:100%;min-width:0}
+
+/* Keep the cart in the upper-right corner without a surrounding box. */
+header{position:relative}
+.topbar{position:static;padding-top:64px}
+.topbar .cart-link{position:absolute;top:12px;right:24px;border:0;border-radius:0;background:transparent;box-shadow:none;padding:10px 8px;line-height:1.5;min-height:44px}
+@media(max-width:720px){.topbar{padding-top:64px}.topbar .cart-link{right:14px}}

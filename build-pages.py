@@ -24,7 +24,7 @@ window.BJ_API=/(^|\\.)bitachonjudaica\\.com$/.test(location.hostname)?"":"https:
 <body>\n<div role="status" style="background:#2B5C99;color:#FAF9F4;text-align:center;padding:12px 20px;font-size:15px;line-height:1.5">This site is under construction until further notice.</div>
 <header>
   <div class="topbar">
-    <a href="/" class="logo brand"><img class="logo-img" src="/assets/logo.png" alt="Bitachon Judaica"><span><span class="brand-text">Bitachon Judaica</span><span class="brand-destination">The Complete Jewish Shopping Destination</span><span class="brand-meaning" style="display:block;font-size:12px;line-height:1.5;margin-top:8px;color:#5a626d">Bitachon means trust in Hashem</span><span class="brand-promise">Know what you want but can\'t find it? Tell us.</span></span></a>
+    <a href="/" class="logo brand"><img class="logo-img" src="/assets/logo.png" alt="Bitachon Judaica"><span><span class="brand-text">Bitachon Judaica</span><span class="brand-destination">The Complete Jewish Shopping Destination</span><span class="brand-meaning" style="display:block;font-size:12px;line-height:1.5;margin-top:8px;color:#5a626d">Bitachon means trust in Hashem</span></span></a>
     <nav aria-label="Main navigation"><ul>
       <li><a href="/shop.html">Shop</a></li>
       <li><a href="/about.html">About</a></li>
@@ -86,7 +86,7 @@ def band(ey, h2, href, label):
 # ---- Shop (all products + dynamic category nav) ----
 # ---- Homepage: a storefront, not a splash page. Everything she sells is visible right away. ----
 home = """
-<section class="store-welcome"><div class="wrap"><p>Know what you want but can\'t find it? Tell us.</p></div></section>\n<div class="home-hero">
+<div class="home-hero">
   <div class="wrap">
     <p class="home-kicker">Mezuzah covers, gifts, apparel, sheitels, and Jewish art.</p>
     <div id="search" class="searchwrap"></div>
@@ -247,6 +247,7 @@ page("cart.html", "Your cart", """
   <noscript>Please enable JavaScript to use your cart, or call (224) 645-2752 to order.</noscript>
 </div>
 """)
+
 
 
 
