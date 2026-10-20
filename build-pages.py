@@ -117,10 +117,7 @@ page("index.html", "Home", home, full_title="Bitachon Judaica")
 
 # The old "made one piece at a time" line is gone on purpose: it is not true of the shirts,
 # sheitels, baby gifts, or anything ordered in, only of the clay work.
-shop = ('<div class="page-hero"><span class="ey">The Collections</span>'
-        '<h1 id="cat-title">Everything</h1>'
-        '<div class="divider"></div></div>'
-        + grid(None)
+shop = (grid(None)
         + band("For schools &amp; groups", "Bulk &amp; custom orders", "/bulk.html", "Request a quote"))
 page("shop.html", "Shop", shop)
 
