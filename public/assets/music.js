@@ -25,7 +25,7 @@
     '<label class="bj-music-volume">Volume <input id="bj-music-volume" type="range" min="0" max="30" step="1" aria-label="Music volume, up to 30 percent"></label>' +
     '<span class="bj-music-status" id="bj-music-status" role="status"></span>';
   player.appendChild(audio);
-  document.body.appendChild(player);
+  document.body.insertBefore(player, document.body.firstChild);
   document.body.classList.add('has-bj-music');
   const playButton = document.getElementById('bj-music-play');
   const nextButton = document.getElementById('bj-music-next');

@@ -1,6 +1,5 @@
-.has-bj-music{padding-bottom:90px}
-.bj-music{position:fixed;bottom:0;left:0;right:0;z-index:90;display:flex;align-items:center;justify-content:center;gap:16px;padding:12px 20px;background:#fffdf8;color:#26303C;border-top:1px solid #B8923D;box-shadow:0 -3px 16px #26303c0c;font-family:Jost,system-ui,sans-serif;line-height:1.4}
-.bj-music-title{display:flex;flex-direction:column;font-size:15px;color:#2B5C99;min-width:135px}
+.bj-music{position:sticky;top:0;left:0;right:0;z-index:90;display:flex;align-items:center;justify-content:flex-start;gap:16px;padding:12px 20px;background:#fffdf8;color:#26303C;border-bottom:1px solid #B8923D;box-shadow:0 3px 16px #26303c0c;font-family:Jost,system-ui,sans-serif;line-height:1.4}
+.bj-music-title{display:flex;flex-direction:column;font-size:15px;color:#2B5C99;min-width:0}
 .bj-music-title small{font-size:12px;color:#5a626d}
 .bj-music button{font:inherit;font-size:14px;min-height:44px;padding:10px 16px;border:1px solid #2B5C99;border-radius:7px;background:#fff;color:#2B5C99;cursor:pointer;white-space:nowrap}
 .bj-music #bj-music-play{background:#2B5C99;color:#fff}
@@ -9,5 +8,5 @@
 .bj-music-status{font-size:12px;max-width:210px;color:#5a626d}
 .bj-music-status:empty{display:none}
 .bj-music button:focus-visible,.bj-music input:focus-visible{outline:3px solid #B8923D;outline-offset:3px}
-@media(max-width:650px){.has-bj-music{padding-bottom:145px}.bj-music{gap:8px;flex-wrap:wrap;padding:9px 12px}.bj-music-title{min-width:110px;font-size:14px}.bj-music button{padding:8px 10px;font-size:13px}.bj-music-volume{justify-content:center;flex-basis:100%}.bj-music-status{max-width:none;flex-basis:100%;text-align:center}}
+@media(max-width:650px){.bj-music{gap:8px;flex-wrap:wrap;padding:9px 12px}.bj-music-title{min-width:0;font-size:14px}.bj-music button{padding:8px 10px;font-size:13px}.bj-music-volume{justify-content:flex-start;flex-basis:100%}.bj-music-status{max-width:none;flex-basis:100%;text-align:left}}
 @media print{.bj-music{display:none}.has-bj-music{padding-bottom:0}}
