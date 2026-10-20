@@ -92,6 +92,18 @@ home = """
     <div id="search" class="searchwrap"></div>
   </div>
 </div>
+<section class="gift-discovery" aria-labelledby="gift-discovery-title">
+  <div class="wrap">
+    <h2 id="gift-discovery-title">Find a gift that feels personal</h2>
+    <p>Explore unique finds from independent sellers on Etsy.</p>
+    <nav class="gift-buttons" aria-label="Explore gifts on Etsy">
+      <a href="https://www.etsy.com/market/unique_gifts?max=25" rel="external">Unique Gifts Under $25 <span aria-hidden="true">&#8599;</span></a>
+      <a href="https://www.etsy.com/c/gifts/personalized-gifts" rel="external">Personalized Gifts <span aria-hidden="true">&#8599;</span></a>
+      <a href="https://www.etsy.com/market/jewish_gifts" rel="external">Jewish Gifts <span aria-hidden="true">&#8599;</span></a>
+    </nav>
+    <p class="gift-shopping-note">These links take you to Etsy, where you complete your purchase. Prices and availability may change. The $25 limit is before shipping, taxes, and personalization extras.</p>
+  </div>
+</section>
 <section class="category-section">
   <div class="wrap">
     <h2 class="sec-title">Shop by category</h2>
@@ -244,6 +256,7 @@ page("cart.html", "Your cart", """
   <noscript>Please enable JavaScript to use your cart, or call (224) 645-2752 to order.</noscript>
 </div>
 """)
+
 
 
 
