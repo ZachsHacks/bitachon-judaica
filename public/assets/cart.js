@@ -27,8 +27,9 @@ window.BJCart = {
 };
 document.addEventListener('DOMContentLoaded',()=>BJCart.init());
 
-/* Shared Back button for every storefront page. */
+/* Shared Back button for storefront pages beyond the homepage. */
 document.addEventListener('DOMContentLoaded', function(){
+  if(window.location.pathname === '/' || window.location.pathname === '/index.html') return;
   const header = document.querySelector('header');
   if(!header) return;
   const row = document.createElement('div');
