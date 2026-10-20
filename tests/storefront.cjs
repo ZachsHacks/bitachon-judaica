@@ -45,6 +45,14 @@ const config = {categories:['Art','Gifts','Empty']};
  await page.getByRole('button',{name:'Clear search'}).click();
  await page.waitForFunction(()=>document.querySelectorAll('.prod').length===12);
  assert.equal(await page.locator('.gift-discovery').isVisible(),true);
+ // Homepage category chips must load full pages, never retain a truncated preview at /shop.html.
+ await page.locator('.catchip[data-cat=""]').click();
+ await page.waitForURL('**/shop.html');await page.waitForFunction(()=>document.querySelectorAll('.prod').length===16);
+ await page.goto('https://bitachon.test/');await page.waitForSelector('.catchip[data-cat="Gifts"]');
+ await page.locator('.catchip[data-cat="Gifts"]').click();await page.waitForURL('**/category.html?c=Gifts');
+ await page.waitForFunction(()=>document.querySelectorAll('.prod').length===1);
+ assert.equal(await page.locator('#cat-title').textContent(),'Gifts');
+ await page.goto('https://bitachon.test/');await page.waitForFunction(()=>document.querySelectorAll('.prod').length===12);
  // Open details, add to local-only cart, and verify the same image mapping is used there.
  await page.locator('.product-details').first().click();await page.waitForSelector('#lb-main');
  assert.match(await page.locator('#lb-main').getAttribute('src'),/catalog-clean/);

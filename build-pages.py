@@ -110,8 +110,8 @@ home = """
 </section>
 <section class="catalog-section" id="collection">
   <div class="wrap">
-    <div class="catalog-heading"><h2 class="sec-title" id="collection-heading">Everything in Sorah's shop</h2><a class="collection-link" href="/shop.html">View the whole collection &rarr;</a></div>
-    <p class="collection-intro">Choose an item to see details and ask about ordering. All her own products, together in one section.</p>
+    <div class="catalog-heading"><h2 class="sec-title" id="collection-heading">Everything in the shop</h2><a class="collection-link" href="/shop.html">View the whole collection &rarr;</a></div>
+    <p class="collection-intro">Choose an item to see details and ask about ordering.</p>
     <nav id="catnav" class="catnav"></nav>
     <div id="products" class="cats"></div>
   </div>

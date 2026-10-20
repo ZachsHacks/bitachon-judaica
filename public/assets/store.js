@@ -68,7 +68,7 @@ window.BJStore = {
     el.innerHTML=visible.length?visible.map((p,i)=>this.card(p,i)).join(''):`<p class="empty">${this._q?'Nothing matched "'+this.esc(this._q)+'". Try a different word.':'New pieces coming soon.'}</p>`;
     if(preview && list.length > visible.length) el.insertAdjacentHTML('beforeend', '<a class="collection-more" href="/shop.html">View all '+list.length+' products &rarr;</a>');
     const heading = document.getElementById('collection-heading');
-    if(heading) heading.textContent = this._q ? 'Search results' : "Everything in Sorah's shop";
+    if(heading) heading.textContent = this._q ? 'Search results' : (category || 'Everything in the shop');
     el.querySelectorAll('.prod').forEach(c => c.onclick = () => this.open(list[+c.dataset.i]));
     const note = document.getElementById('bj-qnote');
     if (note) note.textContent = this._q ? `${list.length} ${list.length===1?'result':'results'}` : `${list.length} products to explore`;
@@ -86,7 +86,8 @@ window.BJStore = {
     const total = (all||[]).filter(p => p.available !== false).length;
     el.innerHTML = chip('Everything', '', !active, total)
       + this.categories(cfg,all).filter(c => count(c) > 0).map(c => chip(c, c, c===active, count(c))).join('');
-    el.querySelectorAll('.catchip').forEach(a => a.onclick = e => { e.preventDefault(); this.go(a.dataset.cat || null); });
+    // Homepage links load the full shop/category page rather than retaining its 12-item preview.
+    if(!window.BJ_HOME) el.querySelectorAll('.catchip').forEach(a => a.onclick = e => { e.preventDefault(); this.go(a.dataset.cat || null); });
   },
 
   // Homepage: a visual tile per category so everything she sells is visible at a glance.
