@@ -20,6 +20,8 @@ HEAD = """<!doctype html>
 live API so previews show the real products. */
 window.BJ_API=/(^|\\.)bitachonjudaica\\.com$/.test(location.hostname)?"":"https://bitachonjudaica.com";</script>
 <script src="/assets/cart.js" defer></script>
+<link rel="stylesheet" href="/assets/music.css">
+<script src="/assets/music.js" defer></script>
 </head>
 <body>\n
 <header>
@@ -58,6 +60,8 @@ def page(filename, title, body, full_title=None):
     html = HEAD.format(title=title) + body + FOOT
     if filename == "index.html":
         html = html.replace('<span class="brand-text">Bitachon Judaica</span>', '<h1 class="brand-text">Bitachon Judaica</h1>', 1)
+    if filename == "about.html":
+        html = html.replace('<span class="brand-destination">The Complete Jewish Shopping Destination</span>', '<span class="brand-destination">The Complete Jewish Shopping Destination</span><span style="display:block;font-family:Jost,sans-serif;font-size:14px;line-height:1.5;font-weight:400;letter-spacing:.08em;color:#B8923D;margin-top:10px">Trust in Hashem</span>', 1)
     if full_title:
         html = html.replace(f"<title>{title} | Bitachon Judaica</title>", f"<title>{full_title}</title>", 1)
     with open(os.path.join(OUT, filename), "w") as f:
@@ -157,18 +161,6 @@ page("category.html", "Shop", category)
 
 # ---- About (headline + paragraphs come from editable config) ----
 about = """
-<div class="letterhead">
-  <img class="lh-seal" src="/assets/logo.png" alt="">
-  <h1 class="lh-name">Bitachon Judaica</h1>
-  <div class="lh-tag">Trust in Hashem</div>
-  <div class="lh-rule"></div>
-  <div class="lh-lines">
-    <a href="https://www.bitachonjudaica.com">www.bitachonjudaica.com</a>
-    <a href="https://www.madeinheavenmezuzahs.com">www.madeinheavenmezuzahs.com</a>
-    <span id="lh-phone"></span>
-    <a id="lh-email" href="mailto:bitachonjudaica@gmail.com">bitachonjudaica@gmail.com</a>
-  </div>
-</div>
 <div class="page-hero" style="padding-top:26px"><span class="ey">Our Story</span><h1 id="about-quote">It began on my mirror</h1><div class="divider"></div></div>
 <div class="prose">
   <div id="about-body">
@@ -186,7 +178,6 @@ about = """
   if(a.quote && a.quote.indexOf("www.")===-1) document.getElementById("about-quote").textContent=a.quote;
   var ps=a.paragraphs||[];
   if(ps.length){document.getElementById("about-body").innerHTML=ps.map(function(p){return "<p>"+p.replace(/&/g,"&amp;").replace(/</g,"&lt;")+"</p>"}).join("")}
-  if(ct.phone){var e=document.getElementById("lh-phone");e.innerHTML='<a href="'+(/^tel:/.test(ct.phoneHref||"")?ct.phoneHref:"tel:"+String(ct.phone).replace(/[^0-9+]/g,""))+'">'+ct.phone+'</a>';}
 }).catch(function(){});</script>
 """
 page("about.html", "Our Story", about)
