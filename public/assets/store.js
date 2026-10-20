@@ -11,6 +11,11 @@ window.BJStore = {
   async _products(){ if(!this._all){ try { this._all = await fetch(this._base+'/api/products').then(r=>r.json()); } catch { this._all = []; } } return this._all; },
   async _config(){ if(!this._cfg){ try { this._cfg = await fetch(this._base+'/api/config').then(r=>r.json()); } catch { this._cfg = {}; } } return this._cfg; },
 
+  // Include every configured category and any category still attached to a product.
+  categories(cfg, all){
+    return [...new Set([...(cfg.categories||[]),...(all||[]).flatMap(p=>p.categories||[])])].filter(Boolean).sort((a,b)=>a.localeCompare(b));
+  },
+
   // ---- search ----
   _match(p, q){
     if(!q) return true;
@@ -55,9 +60,19 @@ window.BJStore = {
       (!category || (p.categories||[]).includes(category)) &&
       this._match(p, this._q));
     this._list = list;
-    el.innerHTML = list.length
-      ? list.map((p,i) => this.card(p,i)).join('')
-      : `<p class="empty">${this._q ? 'Nothing matched "'+this.esc(this._q)+'". Try a different word.' : 'New pieces coming soon.'}</p>`;
+    const grouped=!category && !this._q && list.length;
+    el.classList.toggle('grouped-catalog',Boolean(grouped));
+    if(grouped){
+      const cfg=await this._config();
+      const cats=this.categories(cfg,all);
+      const groups=new Map(cats.map(c=>[c,[]]));
+      const other=[];
+      list.forEach((p,i)=>{const c=cats.find(c=>(p.categories||[]).includes(c));if(c)groups.get(c).push({p,i});else other.push({p,i});});
+      const section=(name,items)=>`<section class="catalog-group"><h3 class="catalog-group-title">${this.esc(name)} <span>${items.length} ${items.length===1?'item':'items'}</span></h3><div class="category-products">${items.map(({p,i})=>this.card(p,i)).join('')}</div></section>`;
+      el.innerHTML=[...groups].filter(([,items])=>items.length).map(([name,items])=>section(name,items)).join('')+(other.length?section('More to explore',other):'');
+    }else{
+      el.innerHTML=list.length?list.map((p,i)=>this.card(p,i)).join(''):`<p class="empty">${this._q?'Nothing matched "'+this.esc(this._q)+'". Try a different word.':'New pieces coming soon.'}</p>`;
+    }
     el.querySelectorAll('.prod').forEach(c => c.onclick = () => this.open(list[+c.dataset.i]));
     const note = document.getElementById('bj-qnote');
     if (note) note.textContent = this._q ? `${list.length} ${list.length===1?'result':'results'}` : `${list.length} products to explore`;
@@ -74,7 +89,7 @@ window.BJStore = {
     const chip = (label, cat, on, n) => `<a class="catchip${on?' on':''}" href="${cat?('/category.html?c='+encodeURIComponent(cat)):'/shop.html'}" data-cat="${this.esc(cat||'')}">${this.esc(label)}${n?`<span class="n">${n}</span>`:''}</a>`;
     const total = (all||[]).filter(p => p.available !== false).length;
     el.innerHTML = chip('Everything', '', !active, total)
-      + (cfg.categories||[]).filter(c => c === active || count(c)).map(c => chip(c, c, c===active, count(c))).join('');
+      + this.categories(cfg,all).map(c => chip(c, c, c===active, count(c))).join('');
     el.querySelectorAll('.catchip').forEach(a => a.onclick = e => { e.preventDefault(); this.go(a.dataset.cat || null); });
   },
 
@@ -83,15 +98,15 @@ window.BJStore = {
     const el = document.getElementById(id); if(!el) return;
     const [cfg, all] = [await this._config(), await this._products()];
     const live = (all||[]).filter(p => p.available !== false);
-    const tiles = (cfg.categories||[]).map(c => {
+    const tiles = this.categories(cfg,all).map(c => {
       const items = live.filter(p => (p.categories||[]).includes(c));
-      if(!items.length) return '';
+
       const hero = items.find(p => (p.images||[]).length);
-      const photo = hero ? `<img src="${this.esc(this._img(hero.images[0]))}" alt="" loading="lazy">` : '';
+      const photo = hero ? `<img src="${this.esc(this._img(hero.images[0]))}" alt="" loading="lazy">` : '<span class="category-soon">Coming soon</span>';
       return `<a class="tile" href="/category.html?c=${encodeURIComponent(c)}">
         <div class="tph">${photo}</div>
         <div class="tname">${this.esc(c)}</div>
-        <div class="tcount">${items.length} ${items.length===1?'item':'items'}</div>
+        <div class="tcount">${items.length?items.length+' '+(items.length===1?'item':'items'):'Coming soon'}</div>
       </a>`;
     }).join('');
     el.innerHTML = tiles || '<p class="empty">Adding pieces now.</p>';
@@ -153,5 +168,6 @@ window.addEventListener('keydown', e => {
   const box = document.getElementById('bj-lb');
   if (box && box.style.display === 'flex') { box.style.display = 'none'; document.body.style.overflow = ''; }
 });
+
 
 
