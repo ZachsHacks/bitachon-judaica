@@ -26,3 +26,22 @@ window.BJCart = {
   }
 };
 document.addEventListener('DOMContentLoaded',()=>BJCart.init());
+
+/* Shared Back button for every storefront page. */
+document.addEventListener('DOMContentLoaded', function(){
+  const header = document.querySelector('header');
+  if(!header) return;
+  const row = document.createElement('div');
+  row.className = 'site-back-row';
+  const button = document.createElement('button');
+  button.type = 'button';
+  button.className = 'site-back';
+  button.setAttribute('aria-label', 'Go back to the previous page');
+  button.textContent = '\u2190 Back';
+  button.addEventListener('click', function(){
+    if(window.history.length > 1) window.history.back();
+    else window.location.assign('/');
+  });
+  row.appendChild(button);
+  header.prepend(row);
+});
