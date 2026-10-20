@@ -25,12 +25,12 @@ window.BJ_API=/(^|\\.)bitachonjudaica\\.com$/.test(location.hostname)?"":"https:
 <header>
   <div class="topbar">
     <a href="/" class="logo brand"><img class="logo-img" src="/assets/logo.png" alt="Bitachon Judaica"><span><span class="brand-text">Bitachon Judaica</span><span class="brand-destination">The Complete Jewish Shopping Destination</span><span class="brand-meaning" style="display:block;font-size:12px;line-height:1.5;margin-top:8px;color:#5a626d">Bitachon means trust in Hashem</span><span class="brand-promise">Know what you want but can\'t find it? Tell us.</span></span></a>
-    <nav aria-label="Main navigation"><ul>
+    <div class="header-links"><nav aria-label="Main navigation"><ul>
       <li><a href="/shop.html">Shop</a></li>
       <li><a href="/about.html">About</a></li>
       <li><a href="/contact.html">Contact</a></li>
     </ul></nav>
-    <a class="icons cart-link" href="/cart.html">Cart (<span data-cart-count>0</span>)</a>
+    <a class="icons cart-link" href="/cart.html">Cart (<span data-cart-count>0</span>)</a></div>
   </div>
 </header>
 <main>
@@ -247,6 +247,7 @@ page("cart.html", "Your cart", """
   <noscript>Please enable JavaScript to use your cart, or call (224) 645-2752 to order.</noscript>
 </div>
 """)
+
 
 
 

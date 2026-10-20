@@ -319,3 +319,10 @@ footer nav ul{flex-wrap:wrap}footer .frow{gap:24px}
 .brand .brand-text{font-size:clamp(30px,4.2vw,58px)}
 .brand-destination{font-size:clamp(14px,3.8vw,46px);white-space:nowrap;letter-spacing:-.02em;max-width:none}
 .topbar .brand>span{width:100%;min-width:0}
+
+/* Keep all shopping navigation together on the right. */
+.topbar .header-links{grid-column:1/-1;justify-self:end;display:flex;align-items:center;justify-content:flex-end;gap:26px;max-width:100%}
+.topbar .header-links nav{margin:0}
+.topbar .header-links nav ul{display:flex;justify-content:flex-end;gap:26px}
+.topbar .header-links .cart-link{position:static;margin:0}
+@media(max-width:520px){.topbar .header-links{gap:14px}.topbar .header-links nav ul{gap:14px}.topbar .header-links nav a,.topbar .header-links .cart-link{font-size:13px}.topbar .header-links .cart-link{padding:8px 10px}}
