@@ -19,7 +19,7 @@
   const player = document.createElement('section');
   player.className = 'bj-music';
   player.setAttribute('aria-label', 'Optional background music');
-  player.innerHTML = '<div class="bj-music-title"><span>Background music</span><small id="bj-music-track"></small></div>' +
+  player.innerHTML = '<div class="bj-music-title"><small id="bj-music-track"></small></div>' +
     '<button type="button" id="bj-music-play">Play music</button>' +
     '<button type="button" id="bj-music-next" aria-label="Play the next song">Next song</button>' +
     '<label class="bj-music-volume">Volume <input id="bj-music-volume" type="range" min="0" max="30" step="1" aria-label="Music volume, up to 30 percent"></label>' +
