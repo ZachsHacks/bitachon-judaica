@@ -16,12 +16,13 @@ HEAD = """<!doctype html>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Playfair+Display:wght@500;600&family=Jost:wght@300;400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/assets/refinement.css">
 <script>/* On the live site read our own API. Anywhere else (Vercel preview, localhost) read the
 live API so previews show the real products. */
 window.BJ_API=/(^|\\.)bitachonjudaica\\.com$/.test(location.hostname)?"":"https://bitachonjudaica.com";</script>
+<script src="/assets/catalog-photos.js"></script>
 <script src="/assets/cart.js" defer></script>
-<link rel="stylesheet" href="/assets/music.css">
-<script src="/assets/music.js" defer></script>
+<script src="/assets/external-links.js" defer></script>
 </head>
 <body>\n
 <header>
@@ -90,7 +91,7 @@ def band(ey, h2, href, label):
 # ---- Shop (all products + dynamic category nav) ----
 # ---- Homepage: a storefront, not a splash page. Everything she sells is visible right away. ----
 home = """
-<section class="store-welcome"><div class="wrap"><p>Know what you want but can\'t find it? Tell us.</p></div></section>\n<div class="home-hero">
+<section class="store-welcome"><div class="wrap"><p>Know what you want but can\'t find it? <a href="/contact.html">Tell us.</a></p></div></section>\n<div class="home-hero">
   <div class="wrap">
     <p class="home-kicker">Mezuzah covers, gifts, apparel, sheitels, and Jewish art.</p>
     <div id="search" class="searchwrap"></div>
@@ -101,30 +102,25 @@ home = """
     <h2 id="gift-discovery-title">Discover gifts through Bitachon Judaica</h2>
     <p>Explore more gifts through our store. Amazon opens in a new tab so you can return here anytime.</p>
     <nav class="gift-buttons" aria-label="Explore gifts on Amazon">
-      <a href="https://www.amazon.com/s?k=unique+gifts&amp;rh=p_36%3A-2500&amp;linkCode=ll2&amp;tag=bitachonjudai-20&amp;linkId=cb5855fb0f71fce89bed054db772c014&amp;language=en_US&amp;ref_=as_li_ss_tl" target="_blank" rel="sponsored external noopener">Unique Gifts Under $25 <span aria-hidden="true">&#8599;</span></a>
-      <a href="https://www.amazon.com/s?k=personalized+gifts&amp;tag=bitachonjudai-20" target="_blank" rel="sponsored external noopener">Personalized Gifts <span aria-hidden="true">&#8599;</span></a>
+      <a href="https://www.amazon.com/s?k=unique+jewish+gifts&amp;rh=p_36%3A-2500&amp;linkCode=ll2&amp;tag=bitachonjudai-20&amp;linkId=cb5855fb0f71fce89bed054db772c014&amp;language=en_US&amp;ref_=as_li_ss_tl" target="_blank" rel="sponsored external noopener">Unique Gifts Under $25 <span aria-hidden="true">&#8599;</span></a>
+      <a href="https://www.amazon.com/s?k=personalized+jewish+gifts&amp;tag=bitachonjudai-20" target="_blank" rel="sponsored external noopener">Personalized Gifts <span aria-hidden="true">&#8599;</span></a>
       <a href="https://www.amazon.com/s?k=jewish+gifts&amp;tag=bitachonjudai-20" target="_blank" rel="sponsored external noopener">Jewish Gifts <span aria-hidden="true">&#8599;</span></a>
     </nav>
-    <p class="gift-shopping-note">Also explore <strong>on this site</strong>: Etsy <a href="https://www.etsy.com/market/unique_gifts?max=25" target="_blank" rel="external noopener" style="text-decoration:underline">Unique gifts under $25</a> &middot; <a href="https://www.etsy.com/c/gifts/personalized-gifts" target="_blank" rel="external noopener" style="text-decoration:underline">Personalized gifts</a> &middot; <a href="https://www.etsy.com/market/jewish_gifts" target="_blank" rel="external noopener" style="text-decoration:underline">Jewish gifts</a></p>\n    <p class="gift-shopping-note"><strong>As an Amazon Associate I earn from qualifying purchases.</strong></p>\n    <p class="gift-shopping-note">Amazon and Etsy open in a new tab, where you complete your purchase. Prices and availability may change. The $25 limit is before shipping, taxes, and personalization extras.</p>
+    <p class="gift-shopping-note">Also explore on Etsy <a href="https://www.etsy.com/market/jewish_gifts?max=25" target="_blank" rel="external noopener" style="text-decoration:underline">Unique gifts under $25</a> &middot; <a href="https://www.etsy.com/market/personalized_jewish_gifts" target="_blank" rel="external noopener" style="text-decoration:underline">Personalized gifts</a> &middot; <a href="https://www.etsy.com/market/jewish_gifts" target="_blank" rel="external noopener" style="text-decoration:underline">Jewish gifts</a></p>\n    <p class="gift-shopping-note"><strong>As an Amazon Associate I earn from qualifying purchases.</strong></p>\n    <p class="gift-shopping-note">Amazon and Etsy open in a new tab, where you complete your purchase. Prices and availability may change. The $25 limit is before shipping, taxes, and personalization extras.</p>
   </div>
 </section>
-<section class="category-section">
+<section class="catalog-section" id="collection">
   <div class="wrap">
-    <h2 class="sec-title">Shop by category</h2>
-    <div id="tiles" class="tiles"></div>
-  </div>
-</section>
-<section class="catalog-section">
-  <div class="wrap">
-    <div class="catalog-heading"><h2 class="sec-title">Everything in the shop</h2><span>Choose an item to see details and order</span></div>
+    <div class="catalog-heading"><h2 class="sec-title" id="collection-heading">Everything in the shop</h2><a class="collection-link" href="/shop.html">View the whole collection &rarr;</a></div>
+    <p class="collection-intro">Choose an item to see details and ask about ordering.</p>
     <nav id="catnav" class="catnav"></nav>
     <div id="products" class="cats"></div>
   </div>
 </section>
 <script src="/assets/store.js"></script>
 <script>
+window.BJ_HOME = true;
 BJStore.renderSearch("search");
-BJStore.renderTiles("tiles");
 BJStore.renderCats("catnav", null);
 BJStore.render("products", null, true);
 </script>
