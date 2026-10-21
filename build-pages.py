@@ -22,6 +22,7 @@ live API so previews show the real products. */
 window.BJ_API=/(^|\\.)bitachonjudaica\\.com$/.test(location.hostname)?"":"https://bitachonjudaica.com";</script>
 <script src="/assets/catalog-photos.js"></script>
 <script src="/assets/cart.js" defer></script>
+<script src="/assets/external-links.js" defer></script>
 </head>
 <body>\n
 <header>
