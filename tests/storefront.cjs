@@ -92,7 +92,7 @@ const config = {categories:['Art','Gifts','Empty']};
  await page.locator('#internal-test').click();assert.equal(await page.locator('.external-warning').evaluate(e=>e.open),false);
  await page.evaluate(()=>{document.querySelector('#external-test').remove();document.querySelector('#internal-test').remove();window.scrollTo(0,0)});
  console.log('PASS: external warning, exact text, no navigation on cancel/Escape, default stay focus, keyboard, middle click, internal links and confirmed URL/tracking preservation.');
- for(const width of [1440,390]){
+ for(const width of [1440,390,320]){
   await page.setViewportSize({width,height:1000});await page.evaluate(()=>document.fonts.ready);
   assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false,`overflow at ${width}`);
   await page.screenshot({path:path.join(evidence,`fixture-${width}.png`),fullPage:true});
