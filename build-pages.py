@@ -81,7 +81,7 @@ def grid(category):
             '<nav id="catnav" class="catnav"></nav>'
             '<div id="products" class="cats"></div>'
             '</div></section>'
-            '<script src="/assets/store.js"></script>'
+            '<script src="/assets/store.js?v=20261022-search"></script>'
             f'<script>BJStore.renderSearch("search");BJStore.render("products", {arg});'
             f'BJStore.renderCats("catnav", {arg})</script>')
 
@@ -101,7 +101,7 @@ home = """
 <section class="gift-discovery" aria-labelledby="gift-discovery-title">
   <div class="wrap">
     <h2 id="gift-discovery-title">Discover gifts through Bitachon Judaica</h2>
-    <p>Find something thoughtful on Amazon or Etsy. Each collection opens in a new tab. <strong>As an Amazon Associate I earn from qualifying purchases.</strong></p>
+    <p class="gift-shopping-note">Find something thoughtful on Amazon or Etsy. Each collection opens in a new tab.<br>As an Amazon Associate I earn from qualifying purchases.</p>
     <h3 class="gift-retailer-heading">Shop gifts on Amazon</h3>
     <nav class="gift-buttons" aria-label="Explore gifts on Amazon">
       <a href="https://www.amazon.com/s?k=unique+jewish+gifts&amp;rh=p_36%3A-2500&amp;linkCode=ll2&amp;tag=bitachonjudai-20&amp;linkId=cb5855fb0f71fce89bed054db772c014&amp;language=en_US&amp;ref_=as_li_ss_tl" target="_blank" rel="sponsored external noopener">Unique Gifts Under $25 <span aria-hidden="true">&#8599;</span></a>
@@ -126,7 +126,7 @@ home = """
     <div id="products" class="cats"></div>
   </div>
 </section>
-<script src="/assets/store.js"></script>
+<script src="/assets/store.js?v=20261022-search"></script>
 <script>
 window.BJ_HOME = true;
 BJStore.renderSearch("search");
@@ -158,7 +158,7 @@ category = ('<div class="page-hero"><span class="ey">Collection</span>'
             '<nav id="catnav" class="catnav"></nav>'
             '<div id="products" class="cats"></div>'
             '</div></section>'
-            '<script src="/assets/store.js"></script>'
+            '<script src="/assets/store.js?v=20261022-search"></script>'
             '<script>BJStore.renderSearch("search");'
             'BJStore.renderFromQuery("products","cat-title");'
             'BJStore.renderCats("catnav", new URLSearchParams(location.search).get("c"))</script>')
