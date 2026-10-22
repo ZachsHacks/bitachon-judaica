@@ -375,3 +375,10 @@ footer nav ul{flex-wrap:wrap}footer .frow{gap:24px}
 
 .gift-discovery .gift-buttons{margin-top:24px;margin-bottom:10px}
 .gift-discovery .gift-retailer-heading{margin:0 auto 28px;font-size:18px}
+
+.topbar .header-links{width:100%;justify-self:stretch;justify-content:space-between}
+.topbar .header-links nav ul{justify-content:flex-start}
+.store-welcome p{font-size:13px;line-height:1.6}
+.store-welcome .own-products-prompt{margin-top:4px;font-size:13px}
+
+.store-welcome a{text-decoration:underline;text-underline-offset:3px}
