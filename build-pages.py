@@ -107,13 +107,14 @@ home = """
       <a href="https://www.amazon.com/s?k=personalized+jewish+gifts&amp;tag=bitachonjudai-20" target="_blank" rel="sponsored external noopener">Personalized Gifts <span aria-hidden="true">&#8599;</span></a>
       <a href="https://www.amazon.com/s?k=jewish+gifts&amp;tag=bitachonjudai-20" target="_blank" rel="sponsored external noopener">Jewish Gifts <span aria-hidden="true">&#8599;</span></a>
     </nav>
+    <p class="gift-shopping-note"><strong>As an Amazon Associate I earn from qualifying purchases.</strong></p>
     <h3 class="gift-retailer-heading">Shop gifts on Etsy</h3>
     <nav class="gift-buttons" aria-label="Explore gifts on Etsy">
       <a href="https://www.etsy.com/market/unique_gifts?max=25" target="_blank" rel="external noopener">Unique Gifts Under $25 <span aria-hidden="true">&#8599;</span></a>
       <a href="https://www.etsy.com/c/gifts/personalized-gifts" target="_blank" rel="external noopener">Personalized Gifts <span aria-hidden="true">&#8599;</span></a>
       <a href="https://www.etsy.com/market/jewish_gifts" target="_blank" rel="external noopener">Jewish Gifts <span aria-hidden="true">&#8599;</span></a>
     </nav>
-    <p class="gift-shopping-note"><strong>As an Amazon Associate I earn from qualifying purchases.</strong></p>\n    <p class="gift-shopping-note">Amazon and Etsy open in a new tab, where you complete your purchase. Prices and availability may change. The $25 limit is before shipping, taxes, and personalization extras.</p>
+\n    <p class="gift-shopping-note">Amazon and Etsy open in a new tab, where you complete your purchase. Prices and availability may change. The $25 limit is before shipping, taxes, and personalization extras.</p>
   </div>
 </section>
 <section class="catalog-section" id="collection">
