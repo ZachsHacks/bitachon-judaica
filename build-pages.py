@@ -130,9 +130,9 @@ home = """
       <h3>Luxury Gifts</h3>
       <nav class="gift-buttons luxury-gift-buttons" aria-label="Explore luxury Judaica">
         <a href="https://www.judaicawebstore.com/hanukkah-menorahs-c106/925-Sterling-Silver.aspx" target="_blank" rel="external noopener">Silver Menorahs <span aria-hidden="true">&#8599;</span><small>Judaica WebStore</small></a>
-        <a href="https://israelicenterofjudaica.com/product-category/judaica/jewish-candelabras/" target="_blank" rel="external noopener">Silver Candelabras <span aria-hidden="true">&#8599;</span><small>Israeli Center of Judaica</small></a>
+        <a href="https://israelicenterofjudaica.com/product-category/judaica/jewish-candelabras/" target="_blank" rel="external noopener">Silver Candelabras <span aria-hidden="true">&#8599;</span><small>Israel Center of Judaica (affiliate approval pending)</small></a>
       </nav>
-      <p class="gift-shopping-note">Each shop opens in a new tab. You complete your purchase with that retailer.</p>
+      <p class="gift-shopping-note">Explore Israel Center of Judaica\'s high-end silver Judaica, including candelabras and menorahs. Its wider catalog also includes other price points. Affiliate approval is pending; these are ordinary retailer links without affiliate tracking. Individual products, prices, and availability have not yet been verified. Each shop opens in a new tab, where you complete your purchase.</p>
     </div>
 
   </div>
@@ -272,6 +272,7 @@ page("cart.html", "Your cart", """
   <noscript>Please enable JavaScript to use your cart, or call (224) 645-2752 to order.</noscript>
 </div>
 """)
+
 
 
 
