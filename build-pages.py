@@ -122,7 +122,6 @@ home = """
         <a href="https://moderntribe.com/" target="_blank" rel="external noopener">ModernTribe <span aria-hidden="true">&#8599;</span></a>
         <a href="https://www.hasofer.com/" target="_blank" rel="external noopener">HaSOFER <span aria-hidden="true">&#8599;</span></a>
         <a href="https://israelicenterofjudaica.com/" target="_blank" rel="external noopener">Israel Center of Judaica <span aria-hidden="true">&#8599;</span></a>
-        <a href="https://www.jewelryjudaica.com/" target="_blank" rel="external noopener">Jewelry Judaica <span aria-hidden="true">&#8599;</span></a>
         <a href="https://judaica.city/" target="_blank" rel="external noopener">Judaica.city <span aria-hidden="true">&#8599;</span></a>
         <a href="https://www.israel-catalog.com/" target="_blank" rel="external noopener">Israel-Catalog <span aria-hidden="true">&#8599;</span></a>
       </nav>
@@ -137,13 +136,12 @@ home = """
         <a href="https://jenniferfisher.com/" target="_blank" rel="external noopener">Jennifer Fisher <span aria-hidden="true">&#8599;</span><small>Beverly Hills fine jewelry</small></a>
         <a href="https://www.goldpointbk.com/" target="_blank" rel="external noopener">Goldpoint Jewelry <span aria-hidden="true">&#8599;</span><small>Greenpoint, Brooklyn fine jewelry</small></a>
         <a href="https://azramehdijewelry.com/" target="_blank" rel="external noopener">Azra Mehdi Jewelry <span aria-hidden="true">&#8599;</span><small>Beverly Hills fine jewelry</small></a>
-      </nav>
-      <h3>Jewelry Gifts</h3>
-      <nav class="gift-buttons luxury-gift-buttons" aria-label="Explore jewelry gifts">
         <a href="https://www.fybjewelry.com/" target="_blank" rel="external noopener">FYB Jewelry <span aria-hidden="true">&#8599;</span><small>Brooklyn gold-plated demi-fine jewelry</small></a>
         <a href="https://gatherbk.com/" target="_blank" rel="external noopener">Gather Brooklyn <span aria-hidden="true">&#8599;</span><small>Thoughtfully made Brooklyn jewelry</small></a>
         <a href="https://www.freidarothman.com/" target="_blank" rel="external noopener">FREIDA ROTHMAN <span aria-hidden="true">&#8599;</span><small>Brooklyn-inspired jewelry and meaningful gifts</small></a>
         <a href="https://www.perrygargano.com/" target="_blank" rel="external noopener">Perry Gargano / 242 Grand Jewelry <span aria-hidden="true">&#8599;</span><small>Distinctive jewelry from Williamsburg, Brooklyn</small></a>
+        <a href="https://www.jewelryjudaica.com/" target="_blank" rel="external noopener">Jewelry Judaica <span aria-hidden="true">&#8599;</span><small>Jewish necklaces, pendants, and meaningful jewelry</small></a>
+        <a href="https://www.judaicawebstore.com/" target="_blank" rel="external noopener">Judaica WebStore Jewelry <span aria-hidden="true">&#8599;</span><small>Jewish jewelry and gifts for special occasions</small></a>
       </nav>
       <p class="gift-shopping-note">Each shop opens in a new tab, where you complete your purchase with that retailer. Prices and availability may change. These are ordinary retailer links; Bitachon Judaica does not currently earn commissions from links in this section.</p>
     </div>
@@ -285,6 +283,7 @@ page("cart.html", "Your cart", """
   <noscript>Please enable JavaScript to use your cart, or call (224) 645-2752 to order.</noscript>
 </div>
 """)
+
 
 
 
