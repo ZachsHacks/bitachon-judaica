@@ -100,14 +100,14 @@ home = """
 <section class="gift-discovery" aria-labelledby="gift-discovery-title">
   <div class="wrap">
     <h2 id="gift-discovery-title">Discover gifts through Bitachon Judaica</h2>
-    <p>Find something thoughtful on Amazon or Etsy. Each collection opens in a new tab.</p>
+    <p>Find something thoughtful on Amazon or Etsy. Each collection opens in a new tab. <strong>As an Amazon Associate I earn from qualifying purchases.</strong></p>
     <h3 class="gift-retailer-heading">Shop gifts on Amazon</h3>
     <nav class="gift-buttons" aria-label="Explore gifts on Amazon">
       <a href="https://www.amazon.com/s?k=unique+jewish+gifts&amp;rh=p_36%3A-2500&amp;linkCode=ll2&amp;tag=bitachonjudai-20&amp;linkId=cb5855fb0f71fce89bed054db772c014&amp;language=en_US&amp;ref_=as_li_ss_tl" target="_blank" rel="sponsored external noopener">Unique Gifts Under $25 <span aria-hidden="true">&#8599;</span></a>
       <a href="https://www.amazon.com/s?k=personalized+jewish+gifts&amp;tag=bitachonjudai-20" target="_blank" rel="sponsored external noopener">Personalized Gifts <span aria-hidden="true">&#8599;</span></a>
       <a href="https://www.amazon.com/s?k=jewish+gifts&amp;tag=bitachonjudai-20" target="_blank" rel="sponsored external noopener">Jewish Gifts <span aria-hidden="true">&#8599;</span></a>
     </nav>
-    <p class="gift-shopping-note"><strong>As an Amazon Associate I earn from qualifying purchases.</strong></p>
+
     <h3 class="gift-retailer-heading">Shop gifts on Etsy</h3>
     <nav class="gift-buttons" aria-label="Explore gifts on Etsy">
       <a href="https://www.etsy.com/market/unique_gifts?max=25" target="_blank" rel="external noopener">Unique Gifts Under $25 <span aria-hidden="true">&#8599;</span></a>
