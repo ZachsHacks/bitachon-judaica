@@ -93,3 +93,9 @@ footer .flogo{color:var(--navy)}footer nav ul{color:#5e6872}.fbtm{color:#68727e;
 .gift-discovery .gift-buttons{margin-top:12px;margin-bottom:8px;gap:12px}
 .gift-discovery .gift-retailer-heading{font-size:16px;margin-bottom:22px}
 @media(max-width:720px){.gift-discovery .gift-buttons a{min-height:52px;padding:12px;font-size:16px}.gift-discovery .gift-buttons{gap:8px}}
+
+.own-collection-shortcut{text-align:center;padding:22px 20px 0}
+.own-collection-shortcut a{display:inline-flex;align-items:center;justify-content:center;gap:16px;min-height:54px;padding:15px 28px;background:#2B5C99;border:1px solid #2B5C99;border-radius:7px;color:#fff;font-family:Jost,sans-serif;font-size:19px;line-height:1.4;text-decoration:none}
+.own-collection-shortcut a:hover{background:#244d80}
+.own-collection-shortcut a:focus-visible{outline:3px solid #B8923D;outline-offset:3px}
+@media(max-width:600px){.own-collection-shortcut a{font-size:17px;width:100%;max-width:400px;padding:14px 18px}}

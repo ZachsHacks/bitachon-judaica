@@ -98,6 +98,7 @@ home = """
   </div>
 </div>
 
+<div class="own-collection-shortcut"><a href="/shop.html">Shop Bitachon Judaica Gifts <span aria-hidden="true">&rarr;</span></a></div>
 <section class="gift-discovery" aria-label="Explore gifts on Amazon and Etsy">
   <div class="wrap">
     <nav class="gift-buttons" aria-label="Explore gifts on Amazon">
