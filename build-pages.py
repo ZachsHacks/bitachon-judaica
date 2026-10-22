@@ -132,9 +132,16 @@ home = """
         <a href="https://www.judaicawebstore.com/hanukkah-menorahs-c106/925-Sterling-Silver.aspx" target="_blank" rel="external noopener">Silver Menorahs <span aria-hidden="true">&#8599;</span><small>Judaica WebStore</small></a>
         <a href="https://israelicenterofjudaica.com/product-category/judaica/jewish-candelabras/" target="_blank" rel="external noopener">Silver Candelabras <span aria-hidden="true">&#8599;</span><small>Israel Center of Judaica (affiliate approval pending)</small></a>
         <a href="https://www.brilliantearth.com/stores/beverly-hills-ca-90210/" target="_blank" rel="external noopener">Brilliant Earth <span aria-hidden="true">&#8599;</span><small>Beverly Hills luxury jewelry (affiliate approval pending)</small></a>
+        <a href="https://ashleyzhangjewelry.com/" target="_blank" rel="external noopener">Ashley Zhang Jewelry <span aria-hidden="true">&#8599;</span><small>Manhattan Diamond District fine jewelry (affiliate approval pending)</small></a>
+        <a href="https://www.amcordesign.com/" target="_blank" rel="external noopener">Amcor Design <span aria-hidden="true">&#8599;</span><small>Manhattan Diamond District jewelry (affiliate approval pending; terms and program availability unconfirmed)</small></a>
+        <a href="https://themjewelersny.com/" target="_blank" rel="external noopener">The M Jewelers <span aria-hidden="true">&#8599;</span><small>New York personalized jewelry (affiliate approval pending)</small></a>
       </nav>
       <p class="gift-shopping-note">Explore Israel Center of Judaica\'s high-end silver Judaica, including candelabras and menorahs. Its wider catalog also includes other price points. Affiliate approval is pending; these are ordinary retailer links without affiliate tracking. Individual products, prices, and availability have not yet been verified. Each shop opens in a new tab, where you complete your purchase.</p>
       <p class="gift-shopping-note">Brilliant Earth is a prospective affiliate. Affiliate approval is pending; no application has been submitted and we have no approved tracking link. These links do not earn us commission. Its <a href="https://www.brilliantearth.com/affiliates/" target="_blank" rel="external noopener">published affiliate program</a> advertises 7% on fine jewelry and 5% on loose diamonds, gemstones, engagement rings, and wedding bands, capped at $500 per order, with a 30-day tracking window for online sales through approved affiliate links. In-store commissions are not confirmed.</p>
+      <p class="gift-shopping-note">Ashley Zhang Jewelry, Amcor Design, and The M Jewelers are prospective affiliates only. Affiliate approval is pending for all three; no applications have been submitted, no approved tracking links exist, and there are no active partnerships. These ordinary retailer links do not earn us commission. Published rates are program information, not a promise of earnings.</p>
+      <p class="gift-shopping-note">Ashley Zhang Jewelry: its <a href="https://ui.awin.com/merchant-profile/116753" target="_blank" rel="external noopener">Awin program listing</a> publishes a 6.4% default commission and a 30-day tracking window. Individual product eligibility, exclusions, and commission caps have not been verified.</p>
+      <p class="gift-shopping-note">Amcor Design: its <a href="https://www.flexoffers.com/affiliate-programs/amcor-design-affiliate-program/" target="_blank" rel="external noopener">FlexOffers listing</a> advertises 15% per sale. Current terms, program availability, enrollment, and product eligibility are unconfirmed.</p>
+      <p class="gift-shopping-note">The M Jewelers: a New York brand founded in the Diamond District, offering personalized and fine jewelry across varying price points. Its <a href="https://ui.awin.com/merchant-profile/118671" target="_blank" rel="external noopener">Awin listing</a> publishes 3% per sale and a 30-day tracking window; individual product eligibility and exclusions have not been verified.</p>
     </div>
 
   </div>
@@ -274,6 +281,7 @@ page("cart.html", "Your cart", """
   <noscript>Please enable JavaScript to use your cart, or call (224) 645-2752 to order.</noscript>
 </div>
 """)
+
 
 
 
