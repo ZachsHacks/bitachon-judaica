@@ -382,3 +382,6 @@ footer nav ul{flex-wrap:wrap}footer .frow{gap:24px}
 .store-welcome .own-products-prompt{margin-top:4px;font-size:13px}
 
 .store-welcome a{text-decoration:underline;text-underline-offset:3px}
+
+.store-welcome #gift-discovery-title{font-family:"Playfair Display",Georgia,serif;font-weight:500;font-size:28px;line-height:1.3;color:#2B5C99;margin:0 0 12px}
+@media(max-width:720px){.store-welcome #gift-discovery-title{font-size:25px}}
