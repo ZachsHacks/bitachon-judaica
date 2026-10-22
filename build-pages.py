@@ -97,8 +97,8 @@ home = """
     <div id="search" class="searchwrap"></div>
   </div>
 </div>
-<section class="store-welcome"><div class="wrap"><h2 id="gift-discovery-title">Discover gifts through Bitachon Judaica</h2><p>Know what you want but can\'t find it? <a href="/contact.html">Tell us.</a></p></div></section>
-<section class="gift-discovery" aria-labelledby="gift-discovery-title">
+
+<section class="gift-discovery" aria-label="Explore gifts on Amazon and Etsy">
   <div class="wrap">
     <nav class="gift-buttons" aria-label="Explore gifts on Amazon">
       <a href="https://www.amazon.com/s?k=unique+jewish+gifts&amp;rh=p_36%3A-2500&amp;linkCode=ll2&amp;tag=bitachonjudai-20&amp;linkId=cb5855fb0f71fce89bed054db772c014&amp;language=en_US&amp;ref_=as_li_ss_tl" target="_blank" rel="sponsored external noopener">Unique Gifts Under $25 <span aria-hidden="true">&#8599;</span></a>
@@ -118,8 +118,9 @@ home = """
 </section>
 <section class="catalog-section" id="collection">
   <div class="wrap">
+    <p class="collection-eyebrow">Discover gifts from Bitachon Judaica</p>
     <div class="catalog-heading"><h2 class="sec-title collection-welcome" id="collection-heading">Enjoy shopping</h2><a class="collection-link" href="/shop.html">View our entire collection &rarr;</a></div>
-    <p class="collection-intro">Choose an item to see details and ask about ordering.</p>
+    <p class="collection-intro collection-help">Know what you want but can\'t find it? <a href="/contact.html">Tell us.</a></p>
     <nav id="catnav" class="catnav"></nav>
     <div id="products" class="cats"></div>
   </div>
