@@ -99,3 +99,12 @@ footer .flogo{color:var(--navy)}footer nav ul{color:#5e6872}.fbtm{color:#68727e;
 .own-collection-shortcut a:hover{background:#244d80}
 .own-collection-shortcut a:focus-visible{outline:3px solid #B8923D;outline-offset:3px}
 @media(max-width:600px){.own-collection-shortcut a{font-size:17px;width:100%;max-width:400px;padding:14px 18px}}
+
+.more-gift-shops{border-top:1px solid #e0d6c0;margin-top:24px;padding-top:22px}
+.more-gift-shops h3{font-family:"Playfair Display",Georgia,serif;font-size:24px;font-weight:500;color:#2B5C99;margin:0 0 14px}
+.more-gift-shops .gift-buttons{margin:12px auto 24px}
+.more-gift-shops .luxury-gift-buttons{grid-template-columns:repeat(2,minmax(0,1fr))}
+.gift-discovery .luxury-gift-buttons a{display:block;padding:16px;line-height:1.5}
+.luxury-gift-buttons small{display:block;font-family:Jost,sans-serif;font-size:13px;font-weight:400;color:#626b75}
+.luxury-gift-buttons a br{display:none}
+@media(max-width:720px){.more-gift-shops .luxury-gift-buttons{grid-template-columns:1fr}}
