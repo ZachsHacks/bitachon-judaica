@@ -71,7 +71,7 @@ window.BJStore = {
     if(heading) heading.textContent = this._q ? 'Search results' : (category || 'Everything in the shop');
     el.querySelectorAll('.prod').forEach(c => c.onclick = () => this.open(list[+c.dataset.i]));
     const note = document.getElementById('bj-qnote');
-    if (note) note.textContent = this._q ? `${list.length} ${list.length===1?'result':'results'}` : `${list.length} products to explore`;
+    if (note) note.textContent = this._q ? `${list.length} ${list.length===1?'result':'results'}` : `${list.length} of our products to explore.`;
     if (!keepScroll) window.scrollTo({ top: 0 });
   },
 
