@@ -367,3 +367,6 @@ footer nav ul{flex-wrap:wrap}footer .frow{gap:24px}
 @media(max-width:820px){.site-back-row{padding-left:20px;padding-right:20px}}
 @media(max-width:520px){.site-back-row{padding-left:14px;padding-right:14px}}
 
+
+.gift-retailer-heading{font-family:Jost,sans-serif;font-size:19px;font-weight:500;color:#26303C;line-height:1.4;margin:26px 0 0}
+.gift-retailer-heading + .gift-buttons{margin-top:12px;margin-bottom:24px}
