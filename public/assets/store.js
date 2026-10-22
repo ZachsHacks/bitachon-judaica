@@ -70,6 +70,8 @@ window.BJStore = {
     const heading = document.getElementById('collection-heading');
     if(heading) heading.textContent = this._q ? 'Search results' : (category || 'Enjoy shopping');
     el.querySelectorAll('.prod').forEach(c => c.onclick = () => this.open(list[+c.dataset.i]));
+    const explore = document.getElementById('own-products-prompt');
+    if (explore) explore.textContent = `Why not explore ${(all || []).filter(p => p.available !== false).length} of our own products?`;
     const note = document.getElementById('bj-qnote');
     if (note) note.textContent = this._q ? `${list.length} ${list.length===1?'result':'results'}` : '';
     if (!keepScroll) window.scrollTo({ top: 0 });
