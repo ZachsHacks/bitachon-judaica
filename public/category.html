@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Playfair+Display:wght@500;600&family=Jost:wght@300;400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/assets/site.css?v=20261022-gifts">
 <link rel="stylesheet" href="/assets/refinement.css">
 <script>/* On the live site read our own API. Anywhere else (Vercel preview, localhost) read the
 live API so previews show the real products. */
@@ -33,7 +33,7 @@ window.BJ_API=/(^|\.)bitachonjudaica\.com$/.test(location.hostname)?"":"https://
   </div>
 </header>
 <main>
-<div class="page-hero"><span class="ey">Collection</span><h1 id="cat-title"></h1><script>(function(){var c=new URLSearchParams(location.search).get("c");if(c){document.getElementById("cat-title").textContent=c;document.title=c+" | Bitachon Judaica";}})();</script><div class="divider"></div></div><section><div class="wrap"><div id="search" class="searchwrap"></div><nav id="catnav" class="catnav"></nav><div id="products" class="cats"></div></div></section><script src="/assets/store.js"></script><script>BJStore.renderSearch("search");BJStore.renderFromQuery("products","cat-title");BJStore.renderCats("catnav", new URLSearchParams(location.search).get("c"))</script></main>
+<div class="page-hero"><span class="ey">Collection</span><h1 id="cat-title"></h1><script>(function(){var c=new URLSearchParams(location.search).get("c");if(c){document.getElementById("cat-title").textContent=c;document.title=c+" | Bitachon Judaica";}})();</script><div class="divider"></div></div><section><div class="wrap"><div id="search" class="searchwrap"></div><nav id="catnav" class="catnav"></nav><div id="products" class="cats"></div></div></section><script src="/assets/store.js?v=20261022-search"></script><script>BJStore.renderSearch("search");BJStore.renderFromQuery("products","cat-title");BJStore.renderCats("catnav", new URLSearchParams(location.search).get("c"))</script></main>
 <footer>
   <div class="wrap shopping-signoff"><p>Enjoy shopping</p><a href="/shop.html">Explore the shop &rarr;</a></div>
   <div class="wrap frow">
