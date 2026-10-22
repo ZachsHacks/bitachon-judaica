@@ -121,11 +121,12 @@ home = """
         <a href="https://www.judaicawebstore.com/" target="_blank" rel="external noopener">Judaica WebStore <span aria-hidden="true">&#8599;</span></a>
         <a href="https://moderntribe.com/" target="_blank" rel="external noopener">ModernTribe <span aria-hidden="true">&#8599;</span></a>
         <a href="https://www.hasofer.com/" target="_blank" rel="external noopener">HaSOFER <span aria-hidden="true">&#8599;</span></a>
-        <a href="https://israelicenterofjudaica.com/" target="_blank" rel="external noopener">Israeli Center of Judaica <span aria-hidden="true">&#8599;</span></a>
+        <a href="https://israelicenterofjudaica.com/" target="_blank" rel="external noopener">Israel Center of Judaica (affiliate approval pending) <span aria-hidden="true">&#8599;</span></a>
         <a href="https://www.jewelryjudaica.com/" target="_blank" rel="external noopener">JewelryJudaica <span aria-hidden="true">&#8599;</span></a>
         <a href="https://judaica.city/" target="_blank" rel="external noopener">Judaica.city <span aria-hidden="true">&#8599;</span></a>
         <a href="https://www.israel-catalog.com/" target="_blank" rel="external noopener">Israel-Catalog <span aria-hidden="true">&#8599;</span></a>
       </nav>
+      <p class="gift-shopping-note">Israel Center of Judaica is a prospective affiliate supplier. Affiliate approval is pending; we have no affiliate tracking link and earn no commission through these links. Dropshipping has not been confirmed. Individual products, prices, and availability have not yet been verified. <a href="https://israelicenterofjudaica.com/affiliate-page/" target="_blank" rel="external noopener">Published affiliate program details</a>: 15% commission on silver and aluminum Judaica and 12% on other products, subject to the supplier\'s terms. Categories for future review include silver menorahs, candelabras, etrog boxes, and Havdalah sets.</p>
       <h3>Luxury Gifts</h3>
       <nav class="gift-buttons luxury-gift-buttons" aria-label="Explore luxury Judaica">
         <a href="https://www.judaicawebstore.com/hanukkah-menorahs-c106/925-Sterling-Silver.aspx" target="_blank" rel="external noopener">Silver Menorahs <span aria-hidden="true">&#8599;</span><small>Judaica WebStore</small></a>
@@ -271,6 +272,7 @@ page("cart.html", "Your cart", """
   <noscript>Please enable JavaScript to use your cart, or call (224) 645-2752 to order.</noscript>
 </div>
 """)
+
 
 
 
