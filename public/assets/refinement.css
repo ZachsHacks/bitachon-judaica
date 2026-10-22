@@ -82,3 +82,9 @@ footer .flogo{color:var(--navy)}footer nav ul{color:#5e6872}.fbtm{color:#68727e;
 .collection-eyebrow{font-size:14px;letter-spacing:.08em;color:#8a703e;margin:0 0 9px}
 .collection-help{font-size:14px;line-height:1.5;margin:8px 0 24px}
 .collection-help a{text-decoration:underline;text-underline-offset:3px}
+
+/* One frame groups both retailer collections and their purchase note. */
+.gift-discovery{padding:28px 0 36px}
+.gift-discovery > .wrap{border:1px solid #B8923D;border-radius:12px;background:#FAF9F4;max-width:1208px;width:calc(100% - 112px);padding:24px 32px;box-sizing:border-box}
+@media(max-width:1000px){.gift-discovery > .wrap{width:calc(100% - 60px);padding:22px 24px}}
+@media(max-width:600px){.gift-discovery > .wrap{width:calc(100% - 40px);padding:18px 14px}.gift-discovery{padding:20px 0 28px}}
