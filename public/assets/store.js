@@ -68,7 +68,7 @@ window.BJStore = {
     el.innerHTML=visible.length?visible.map((p,i)=>this.card(p,i)).join(''):`<p class="empty">${this._q?'Nothing matched "'+this.esc(this._q)+'". Try a different word.':'New pieces coming soon.'}</p>`;
     if(preview && list.length > visible.length) el.insertAdjacentHTML('beforeend', '<a class="collection-more" href="/shop.html">View all '+list.length+' products &rarr;</a>');
     const heading = document.getElementById('collection-heading');
-    if(heading) heading.textContent = this._q ? 'Search results' : (category || 'Everything in the shop');
+    if(heading) heading.textContent = this._q ? 'Search results' : (category || 'Enjoy shopping');
     el.querySelectorAll('.prod').forEach(c => c.onclick = () => this.open(list[+c.dataset.i]));
     const note = document.getElementById('bj-qnote');
     if (note) note.textContent = this._q ? `${list.length} ${list.length===1?'result':'results'}` : `${list.length} of our products to explore.`;
