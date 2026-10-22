@@ -136,6 +136,7 @@ home = """
         <a href="https://www.amcordesign.com/" target="_blank" rel="external noopener">Amcor Design <span aria-hidden="true">&#8599;</span><small>Manhattan Diamond District jewelry (affiliate approval pending; terms and program availability unconfirmed)</small></a>
         <a href="https://themjewelersny.com/" target="_blank" rel="external noopener">The M Jewelers <span aria-hidden="true">&#8599;</span><small>New York personalized jewelry (affiliate approval pending)</small></a>
         <a href="https://jenniferfisher.com/" target="_blank" rel="external noopener">Jennifer Fisher <span aria-hidden="true">&#8599;</span><small>Beverly Hills fine jewelry (affiliate approval pending; enrollment unconfirmed)</small></a>
+        <a href="https://www.goldpointbk.com/" target="_blank" rel="external noopener">Goldpoint Jewelry <span aria-hidden="true">&#8599;</span><small>Greenpoint, Brooklyn fine jewelry (affiliate approval pending)</small></a>
       </nav>
       <p class="gift-shopping-note">Explore Israel Center of Judaica\'s high-end silver Judaica, including candelabras and menorahs. Its wider catalog also includes other price points. Affiliate approval is pending; these are ordinary retailer links without affiliate tracking. Individual products, prices, and availability have not yet been verified. Each shop opens in a new tab, where you complete your purchase.</p>
       <p class="gift-shopping-note">Brilliant Earth is a prospective affiliate. Affiliate approval is pending; no application has been submitted and we have no approved tracking link. These links do not earn us commission. Its <a href="https://www.brilliantearth.com/affiliates/" target="_blank" rel="external noopener">published affiliate program</a> advertises 7% on fine jewelry and 5% on loose diamonds, gemstones, engagement rings, and wedding bands, capped at $500 per order, with a 30-day tracking window for online sales through approved affiliate links. In-store commissions are not confirmed.</p>
@@ -144,6 +145,7 @@ home = """
       <p class="gift-shopping-note">Amcor Design: its <a href="https://www.flexoffers.com/affiliate-programs/amcor-design-affiliate-program/" target="_blank" rel="external noopener">FlexOffers listing</a> advertises 15% per sale. Current terms, program availability, enrollment, and product eligibility are unconfirmed.</p>
       <p class="gift-shopping-note">The M Jewelers: a New York brand founded in the Diamond District, offering personalized and fine jewelry across varying price points. Its <a href="https://ui.awin.com/merchant-profile/118671" target="_blank" rel="external noopener">Awin listing</a> publishes 3% per sale and a 30-day tracking window; individual product eligibility and exclusions have not been verified.</p>
       <p class="gift-shopping-note">Jennifer Fisher: prospective affiliate, approval pending. Its <a href="https://www.flexoffers.com/affiliate-programs/jennifer-fisher-jewelry-affiliate-program/" target="_blank" rel="external noopener">FlexOffers listing</a> advertises 4% and a 30-day tracking window; current enrollment and product eligibility need confirmation. The <a href="https://jenniferfisher.com/pages/contact" target="_blank" rel="external noopener">official store information</a> includes Beverly Hills. No application has been submitted, and this ordinary retailer link has no approved commission tracking.</p>
+      <p class="gift-shopping-note">Goldpoint Jewelry: a fine jewelry studio in Greenpoint, Brooklyn, offering engagement rings and wedding bands. Its <a href="https://ui.awin.com/merchant-profile/118539" target="_blank" rel="external noopener">Awin program listing</a> publishes a 3% default commission and a 30-day tracking window. Affiliate approval is pending; no application has been submitted and there is no active partnership or approved tracking link. This ordinary retailer link does not earn us commission. Individual product eligibility, exclusions, and caps have not been confirmed; published rates are not a promise of earnings.</p>
       <h3>Jewelry Gifts</h3>
       <nav class="gift-buttons" aria-label="Explore jewelry gifts">
         <a href="https://www.fybjewelry.com/" target="_blank" rel="external noopener">FYB Jewelry <span aria-hidden="true">&#8599;</span><small>Brooklyn gold-plated demi-fine jewelry (affiliate approval pending)</small></a>
@@ -291,6 +293,7 @@ page("cart.html", "Your cart", """
   <noscript>Please enable JavaScript to use your cart, or call (224) 645-2752 to order.</noscript>
 </div>
 """)
+
 
 
 
