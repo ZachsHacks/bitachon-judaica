@@ -88,3 +88,8 @@ footer .flogo{color:var(--navy)}footer nav ul{color:#5e6872}.fbtm{color:#68727e;
 .gift-discovery > .wrap{border:1px solid #B8923D;border-radius:12px;background:#FAF9F4;max-width:1208px;width:calc(100% - 112px);padding:24px 32px;box-sizing:border-box}
 @media(max-width:1000px){.gift-discovery > .wrap{width:calc(100% - 60px);padding:22px 24px}}
 @media(max-width:600px){.gift-discovery > .wrap{width:calc(100% - 40px);padding:18px 14px}.gift-discovery{padding:20px 0 28px}}
+
+.gift-discovery .gift-buttons a{min-height:64px;padding:14px 18px;font-size:18px;line-height:1.35}
+.gift-discovery .gift-buttons{margin-top:12px;margin-bottom:8px;gap:12px}
+.gift-discovery .gift-retailer-heading{font-size:16px;margin-bottom:22px}
+@media(max-width:720px){.gift-discovery .gift-buttons a{min-height:52px;padding:12px;font-size:16px}.gift-discovery .gift-buttons{gap:8px}}
