@@ -119,11 +119,15 @@ home = """
       <h3>More Jewish Gift Shops</h3>
       <nav class="gift-buttons" aria-label="More Jewish gift shops">
         <a href="https://www.judaicawebstore.com/" target="_blank" rel="external noopener">Judaica WebStore <span aria-hidden="true">&#8599;</span></a>
-        <a href="https://moderntribe.com/" target="_blank" rel="external noopener">ModernTribe <span aria-hidden="true">&#8599;</span></a>
+        <a href="https://moderntribe.com/" target="_blank" rel="external noopener"><span>ModernTribe<small style="display:block;font-size:12px;line-height:1.5;margin-top:4px">Jewish gifts and Judaica for holidays and everyday life</small></span><span aria-hidden="true">&#8599;</span></a>
         <a href="https://www.hasofer.com/" target="_blank" rel="external noopener">HaSOFER <span aria-hidden="true">&#8599;</span></a>
         <a href="https://israelicenterofjudaica.com/" target="_blank" rel="external noopener">Israel Center of Judaica <span aria-hidden="true">&#8599;</span></a>
-        <a href="https://judaica.city/" target="_blank" rel="external noopener">Judaica.city <span aria-hidden="true">&#8599;</span></a>
+        <a href="https://judaica.city/" target="_blank" rel="external noopener"><span>Judaica.city<small style="display:block;font-size:12px;line-height:1.5;margin-top:4px">Custom kippahs, challah covers, and Kiddush essentials</small></span><span aria-hidden="true">&#8599;</span></a>
         <a href="https://www.israel-catalog.com/" target="_blank" rel="external noopener">Israel-Catalog <span aria-hidden="true">&#8599;</span></a>
+
+        <a href="https://www.judaica.com/" target="_blank" rel="external noopener"><span>Judaica.com<small style="display:block;font-size:12px;line-height:1.5;margin-top:4px">Jewish gifts, Shabbat essentials, and home decor</small></span><span aria-hidden="true">&#8599;</span></a>
+        <a href="https://kosher-innovations.com/" target="_blank" rel="external noopener"><span>Kosher Innovations<small style="display:block;font-size:12px;line-height:1.5;margin-top:4px">Practical Shabbos products for the Jewish home</small></span><span aria-hidden="true">&#8599;</span></a>
+        <a href="https://www.judaica-mall.com/" target="_blank" rel="external noopener"><span>Judaica Mall<small style="display:block;font-size:12px;line-height:1.5;margin-top:4px">Judaica and Jewish gifts for celebrations and the home</small></span><span aria-hidden="true">&#8599;</span></a>
       </nav>
       <h3>Luxury Gifts</h3>
       <nav class="gift-buttons luxury-gift-buttons" aria-label="Explore luxury gifts and jewelry">
@@ -283,6 +287,7 @@ page("cart.html", "Your cart", """
   <noscript>Please enable JavaScript to use your cart, or call (224) 645-2752 to order.</noscript>
 </div>
 """)
+
 
 
 
