@@ -97,7 +97,7 @@ home = """
     <div id="search" class="searchwrap"></div>
   </div>
 </div>
-<section class="store-welcome"><div class="wrap"><h2 id="gift-discovery-title">Discover gifts through Bitachon Judaica</h2><p>Know what you want but can\'t find it? <a href="/contact.html">Tell us.</a></p><p class="own-products-prompt" id="own-products-prompt"></p></div></section>
+<section class="store-welcome"><div class="wrap"><h2 id="gift-discovery-title">Discover gifts through Bitachon Judaica</h2><p>Know what you want but can\'t find it? <a href="/contact.html">Tell us.</a></p></div></section>
 <section class="gift-discovery" aria-labelledby="gift-discovery-title">
   <div class="wrap">
     <nav class="gift-buttons" aria-label="Explore gifts on Amazon">
