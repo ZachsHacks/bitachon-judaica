@@ -62,7 +62,7 @@ window.BJStore = {
     this._list = list;
     // The homepage previews one collection. Search and category filters always use all products.
     const preview = window.BJ_HOME && !category && !this._q;
-    const visible = preview ? list.slice(0, 12) : list;
+    const visible = preview ? list.slice(0, 24) : list;
     document.body.classList.toggle('is-searching', Boolean(this._q));
     el.classList.remove('grouped-catalog');
     el.innerHTML=visible.length?visible.map((p,i)=>this.card(p,i)).join(''):`<p class="empty">${this._q?'Nothing matched "'+this.esc(this._q)+'". Try a different word.':'New pieces coming soon.'}</p>`;
@@ -86,7 +86,7 @@ window.BJStore = {
     const total = (all||[]).filter(p => p.available !== false).length;
     el.innerHTML = chip('Everything', '', !active, total)
       + this.categories(cfg,all).filter(c => count(c) > 0).map(c => chip(c, c, c===active, count(c))).join('');
-    // Homepage links load the full shop/category page rather than retaining its 12-item preview.
+    // Homepage links load the full shop/category page rather than retaining its 24-item preview.
     if(!window.BJ_HOME) el.querySelectorAll('.catchip').forEach(a => a.onclick = e => { e.preventDefault(); this.go(a.dataset.cat || null); });
   },
 
@@ -165,6 +165,7 @@ window.addEventListener('keydown', e => {
   const box = document.getElementById('bj-lb');
   if (box && box.style.display === 'flex') { box.style.display = 'none'; document.body.style.overflow = ''; }
 });
+
 
 
 
