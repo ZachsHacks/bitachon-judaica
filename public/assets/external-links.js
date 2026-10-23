@@ -33,7 +33,8 @@
     const anchor = event.target.closest?.('a[href]');
     if (!anchor || dialog.contains(anchor)) return;
     const url = new URL(anchor.href, location.href);
-    if (!['http:', 'https:'].includes(url.protocol) || url.origin === location.origin) return;
+    const guarded = url.origin === location.origin && url.pathname === '/shop-out';
+    if (!['http:', 'https:'].includes(url.protocol) || (url.origin === location.origin && !guarded)) return;
     event.preventDefault();
     event.stopPropagation();
     if (dialog.open) return;
@@ -46,3 +47,4 @@
   document.addEventListener('click', intercept, true);
   document.addEventListener('auxclick', intercept, true);
 })();
+

@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 # Builds basic on-brand subpages for Bitachon Judaica, sharing one stylesheet.
 import os
+import re
+import html
+from urllib.parse import quote
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "public")
 
 HEAD = """<!doctype html>
@@ -60,15 +63,22 @@ FOOT = """</main>
 """
 
 def page(filename, title, body, full_title=None):
-    html = HEAD.format(title=title) + body + FOOT
     if filename == "index.html":
-        html = html.replace('<span class="brand-text">Bitachon Judaica</span>', '<h1 class="brand-text">Bitachon Judaica</h1>', 1)
+        # Every shopping destination goes through the server availability check.
+        start = body.index('<section class="gift-discovery"')
+        end = body.index('<section class="catalog-section"', start)
+        shops = body[start:end]
+        shops = re.sub(r'href="(https://[^"]+)"', lambda m: 'href="/shop-out?to=' + quote(html.unescape(m.group(1)), safe='') + '"', shops)
+        body = body[:start] + shops + body[end:]
+    document = HEAD.format(title=title) + body + FOOT
+    if filename == "index.html":
+        document = document.replace('<span class="brand-text">Bitachon Judaica</span>', '<h1 class="brand-text">Bitachon Judaica</h1>', 1)
     if filename == "about.html":
-        html = html.replace('<span class="brand-destination">The Complete Jewish Shopping Destination</span>', '<span class="brand-destination">The Complete Jewish Shopping Destination</span><span style="display:block;font-family:Jost,sans-serif;font-size:14px;line-height:1.5;font-weight:400;letter-spacing:.08em;color:#B8923D;margin-top:10px">Trust in Hashem</span>', 1)
+        document = document.replace('<span class="brand-destination">The Complete Jewish Shopping Destination</span>', '<span class="brand-destination">The Complete Jewish Shopping Destination</span><span style="display:block;font-family:Jost,sans-serif;font-size:14px;line-height:1.5;font-weight:400;letter-spacing:.08em;color:#B8923D;margin-top:10px">Trust in Hashem</span>', 1)
     if full_title:
-        html = html.replace(f"<title>{title} | Bitachon Judaica</title>", f"<title>{full_title}</title>", 1)
+        document = document.replace(f"<title>{title} | Bitachon Judaica</title>", f"<title>{full_title}</title>", 1)
     with open(os.path.join(OUT, filename), "w") as f:
-        f.write(html)
+        f.write(document)
     print("wrote", filename)
 
 def hero(ey, h1, sub=""):
