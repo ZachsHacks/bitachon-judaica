@@ -5,6 +5,8 @@ const http = require("http");
 const fs = require("fs");
 const path = require("path");
 const crypto = require("crypto");
+const {createClosure, enforce, normalizedPath} = require("./closure");
+const closure = createClosure();
 
 const ROOT = path.join(__dirname, "public");
 const DATA_DIR = path.join(__dirname, "data");
@@ -116,6 +118,20 @@ async function aiGenerate(field, b) {
 const server = http.createServer((req, res) => {
   const url = (req.url || "/").split("?")[0];
 
+  const state = closure.status();
+  if (enforce(req, res, state)) return;
+  if (url === "/api/store-status" && req.method === "GET") return json(res, 200, state, true);
+  if (normalizedPath(req.url) === "/shop-out") {
+    if (req.method !== "GET") return json(res, 405, { error: "method_not_allowed" });
+    try {
+      const target = new URL(new URL(req.url, "http://localhost").searchParams.get("to"));
+      const allowed = new Set(['www.amazon.com','www.etsy.com','www.judaicawebstore.com','moderntribe.com','www.hasofer.com','israelicenterofjudaica.com','judaica.city','www.israel-catalog.com','www.judaica.com','kosher-innovations.com','www.judaica-mall.com','ahuva.com','www.brilliantearth.com','ashleyzhangjewelry.com','www.amcordesign.com','themjewelersny.com','jenniferfisher.com','www.goldpointbk.com','azramehdijewelry.com','www.fybjewelry.com','gatherbk.com','www.freidarothman.com','www.perrygargano.com','www.jewelryjudaica.com']);
+      if (target.protocol !== 'https:' || target.username || target.password || target.port || !allowed.has(target.hostname)) throw Error('Invalid shop');
+      res.writeHead(302, { Location: target.href, 'Cache-Control': 'no-store' });
+      return res.end();
+    } catch { return json(res, 400, { error: 'invalid_shop' }); }
+  }
+
   if (url.startsWith("/api/")) {
     // ---- public reads ----
     if (url === "/api/products" && req.method === "GET") return json(res, 200, readProducts(), true);
@@ -224,3 +240,4 @@ const server = http.createServer((req, res) => {
   });
 });
 server.listen(PORT, "0.0.0.0", () => console.log("bitachon-site on :" + PORT + (TOKEN ? " (admin on)" : " (NO ADMIN_PASSWORD)")));
+
