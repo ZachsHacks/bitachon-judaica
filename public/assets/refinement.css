@@ -108,3 +108,32 @@ footer .flogo{color:var(--navy)}footer nav ul{color:#5e6872}.fbtm{color:#68727e;
 .luxury-gift-buttons small{display:block;font-family:Jost,sans-serif;font-size:13px;font-weight:400;color:#626b75}
 .luxury-gift-buttons a br{display:none}
 @media(max-width:720px){.more-gift-shops .luxury-gift-buttons{grid-template-columns:1fr}}
+
+
+/* Compact, consistent personal-store products below the browsing boxes. */
+#products.cats{grid-template-columns:repeat(6,minmax(0,1fr));gap:18px;align-items:stretch}
+#products .cat{display:flex;flex-direction:column;min-width:0;padding:12px;background:#fff;border:1px solid #e1e2dc;border-radius:9px}
+#products .cat:hover{border-color:#b8c5d3;box-shadow:0 3px 12px #26303c0a}
+#products .cat .ph,#products .cat.wide .ph{height:128px;aspect-ratio:auto;flex-shrink:0;border:0;border-radius:6px;background:#faf9f6}
+#products .cat .ph img,#products .cat.wide .ph img{width:100%;height:100%;max-height:128px;object-fit:contain;padding:8px}
+#products .cat h3{font-size:18px;line-height:1.4;margin-top:12px;overflow-wrap:anywhere}
+#products .cat .cprice{font-size:20px;margin-top:5px}
+#products .cat .price-note{font-size:15px}
+#products .cat .cdesc,#products .cat .cbody{font-size:14px;line-height:1.5;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden}
+#products .cat .chips{gap:5px;margin-top:9px;margin-bottom:12px}
+#products .cat .chip{font-size:10px;letter-spacing:.03em}
+#products .cat .more{top:16px;right:16px;font-size:11px;padding:2px 7px}
+#products .product-details{margin-top:auto;font-size:14px;min-height:44px;padding:10px 9px;background:#fafcfe}
+#products .cat .cbody:last-of-type,#products .cat .cdesc:last-of-type{margin-bottom:12px}
+@media(max-width:1100px){#products.cats{grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}}
+@media(max-width:800px){#products.cats{grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}}
+@media(max-width:600px){
+ #products.cats{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+ #products .cat{padding:10px}
+ #products .cat .ph,#products .cat.wide .ph{height:112px}
+ #products .cat .ph img,#products .cat.wide .ph img{max-height:112px;padding:6px}
+ #products .cat h3{font-size:17px}
+ #products .cat .cprice{font-size:19px}
+ #products .cat .more{top:12px;right:12px;font-size:10px}
+}
+
