@@ -16,7 +16,7 @@ HEAD = """<!doctype html>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Playfair+Display:wght@500;600&family=Jost:wght@300;400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/site.css?v=20261022-gifts-2">
-<link rel="stylesheet" href="/assets/refinement.css?v=20261022-compact">
+<link rel="stylesheet" href="/assets/refinement.css?v=20261022-notice">
 <script>/* On the live site read our own API. Anywhere else (Vercel preview, localhost) read the
 live API so previews show the real products. */
 window.BJ_API=/(^|\\.)bitachonjudaica\\.com$/.test(location.hostname)?"":"https://bitachonjudaica.com";</script>
@@ -25,6 +25,7 @@ window.BJ_API=/(^|\\.)bitachonjudaica\\.com$/.test(location.hostname)?"":"https:
 <script src="/assets/external-links.js" defer></script>
 </head>
 <body>\n
+<div class="shabbos-notice" role="note" aria-label="Shop notice">OUR SHOP IS CLOSED FOR SHABBOS AND YOM. PLEASE VISIT US AGAIN AFTERWARD.</div>
 <header>
   <div class="topbar">
     <a href="/" class="logo brand"><img class="logo-img" src="/assets/logo.png" alt="Bitachon Judaica"><span><span class="brand-text">Bitachon Judaica</span><span class="brand-destination">The Complete Jewish Shopping Destination</span><span class="brand-meaning" style="display:block;font-size:12px;line-height:1.5;margin-top:8px;color:#5a626d">Bitachon means trust in Hashem</span><span class="brand-promise">Know what you want but can\'t find it? Tell us.</span></span></a>
@@ -288,6 +289,7 @@ page("cart.html", "Your cart", """
   <noscript>Please enable JavaScript to use your cart, or call (224) 645-2752 to order.</noscript>
 </div>
 """)
+
 
 
 

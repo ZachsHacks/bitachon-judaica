@@ -137,3 +137,8 @@ footer .flogo{color:var(--navy)}footer nav ul{color:#5e6872}.fbtm{color:#68727e;
  #products .cat .more{top:12px;right:12px;font-size:10px}
 }
 
+
+/* Owner-requested notice, displayed without an automatic closing schedule. */
+.shabbos-notice{background:#2B5C99;color:#FAF9F4;border-bottom:2px solid #B8923D;padding:18px 24px;text-align:center;font-family:Jost,system-ui,sans-serif;font-size:clamp(16px,1.6vw,20px);font-weight:400;line-height:1.6;letter-spacing:.035em;overflow-wrap:break-word}
+@media(max-width:600px){.shabbos-notice{padding:14px 18px;letter-spacing:.02em}}
+
