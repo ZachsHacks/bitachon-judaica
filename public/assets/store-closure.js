@@ -1,6 +1,6 @@
 /* Shopping controls follow the configured calendar; installed server checks remain authoritative. */
 (() => {
-  const NOTICE='OUR SHOP IS CLOSED FOR SHABBOS AND YOM. PLEASE VISIT US AGAIN AFTERWARD.';
+  const NOTICE='OUR SHOP IS CLOSED FOR SHABBOS AND YOM TOV. PLEASE VISIT US AGAIN AFTERWARD.';
   let state={closed:true,status:'unavailable'}, calendar, serverState, serverOffset=0, pending;
   const saved=new WeakMap();
   const shopping='.gift-discovery a,.external-continue,a[href^="/shop-out?"],.cart-call,.cart-phone,.phone-order,#add-to-cart';
