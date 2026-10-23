@@ -15,7 +15,7 @@
   function update(){
     state=current();
     const banner=document.querySelector('.shabbos-notice');
-    if(banner){banner.hidden=!state.closed;banner.textContent=state.notice||(state.status==='closed'?NOTICE:'Shopping is temporarily unavailable. Please try again later.');}
+    if(banner && !banner.hasAttribute('data-persistent-notice')){banner.hidden=!state.closed;banner.textContent=state.notice||(state.status==='closed'?NOTICE:'Shopping is temporarily unavailable. Please try again later.');}
     document.querySelectorAll(shopping+', [data-closure-disabled]').forEach(el=>{
       if(state.closed){
         if(!saved.has(el))saved.set(el,{href:el.getAttribute('href'),disabled:el.disabled});
