@@ -95,7 +95,7 @@ def band(ey, h2, href, label):
 home = """
 <div class="home-hero">
   <div class="wrap">
-    <p class="home-kicker">Mezuzah covers, gifts, apparel, sheitels, and Jewish art.</p>
+    <p class="home-kicker">Welcome to Bitachon Judaica! Mezuzah covers, gifts, apparel, sheitels, and Jewish art.</p>
     <div id="search" class="searchwrap"></div>
   </div>
 </div>
