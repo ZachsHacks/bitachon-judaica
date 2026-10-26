@@ -122,7 +122,7 @@ home = """
       <h3>More Jewish Gift Shops</h3>
       <nav class="gift-buttons" aria-label="More Jewish gift shops">
         <a href="https://www.judaicawebstore.com/" target="_blank" rel="external noopener">Judaica WebStore <span aria-hidden="true">&#8599;</span></a>
-        <a href="https://moderntribe.com/" target="_blank" rel="external noopener"><span>ModernTribe<small style="display:block;font-size:12px;line-height:1.5;margin-top:4px">Jewish gifts and Judaica for holidays and everyday life</small></span><span aria-hidden="true">&#8599;</span></a>
+        <a href="https://moderntribe.com?aff=324" target="_blank" rel="external noopener sponsored"><span>ModernTribe<small style="display:block;font-size:12px;line-height:1.5;margin-top:4px">Jewish gifts and Judaica for holidays and everyday life</small></span><span aria-hidden="true">&#8599;</span></a>
         <a href="https://www.hasofer.com/" target="_blank" rel="external noopener"><span>HaSOFER<small style="display:block;font-size:12px;line-height:1.5;margin-top:4px">Judaica, silver gifts, tallitot, tefillin, and mezuzot</small></span><span aria-hidden="true">&#8599;</span></a>
         <a href="https://israelicenterofjudaica.com/" target="_blank" rel="external noopener">Israel Center of Judaica <span aria-hidden="true">&#8599;</span></a>
         <a href="https://judaica.city/" target="_blank" rel="external noopener"><span>Judaica.city<small style="display:block;font-size:12px;line-height:1.5;margin-top:4px">Custom kippahs, challah covers, and Kiddush essentials</small></span><span aria-hidden="true">&#8599;</span></a>
@@ -150,7 +150,7 @@ home = """
         <a href="https://www.jewelryjudaica.com/" target="_blank" rel="external noopener">Jewelry Judaica <span aria-hidden="true">&#8599;</span><small>Jewish necklaces, pendants, and meaningful jewelry</small></a>
         <a href="https://www.judaicawebstore.com/" target="_blank" rel="external noopener">Judaica WebStore Jewelry <span aria-hidden="true">&#8599;</span><small>Jewish jewelry and gifts for special occasions</small></a>
       </nav>
-      <p class="gift-shopping-note">Each shop opens in a new tab, where you complete your purchase with that retailer. Prices and availability may change. These are ordinary retailer links; Bitachon Judaica does not currently earn commissions from links in this section.</p>
+      <p class="gift-shopping-note">Each shop opens in a new tab, where you complete your purchase with that retailer. Prices and availability may change. The ModernTribe link is an affiliate link. Bitachon Judaica may earn a commission on qualifying purchases through it. The other links in this section are ordinary retailer links.</p>
     </div>
 
   </div>
