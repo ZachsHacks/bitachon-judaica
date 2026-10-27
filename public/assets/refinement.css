@@ -146,3 +146,9 @@ footer .flogo{color:var(--navy)}footer nav ul{color:#5e6872}.fbtm{color:#68727e;
 .shabbos-notice[hidden]{display:none}
 [data-closure-disabled]{opacity:.5;cursor:not-allowed!important}
 
+
+/* Homepage search trial: navy field with white lettering. */
+.home-hero .searchbox{background:#234f86;border-color:#234f86}
+.home-hero .searchbox input{background:transparent;color:#fff;caret-color:#fff}
+.home-hero .searchbox input::placeholder{color:#fff;opacity:1}
+.home-hero .searchbox button{background:transparent;color:#fff}

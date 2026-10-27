@@ -16,7 +16,7 @@ HEAD = """<!doctype html>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Playfair+Display:wght@500;600&family=Jost:wght@300;400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/site.css?v=20261022-gifts-2">
-<link rel="stylesheet" href="/assets/refinement.css?v=20261022-closure">
+<link rel="stylesheet" href="/assets/refinement.css?v=20261027-navy-search">
 <script>/* On the live site read our own API. Anywhere else (Vercel preview, localhost) read the
 live API so previews show the real products. */
 window.BJ_API=/(^|\\.)bitachonjudaica\\.com$/.test(location.hostname)?"":"https://bitachonjudaica.com";</script>
@@ -104,7 +104,6 @@ home = """
   </div>
 </div>
 
-<div class="own-collection-shortcut"><a href="/shop.html">Shop Bitachon Judaica Gifts <span aria-hidden="true">&rarr;</span></a></div>
 <section class="gift-discovery" aria-label="Explore gifts on Amazon and Etsy">
   <div class="wrap">
     <nav class="gift-buttons" aria-label="Explore gifts on Amazon">
