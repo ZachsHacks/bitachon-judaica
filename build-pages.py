@@ -27,7 +27,7 @@ window.BJ_API=/(^|\\.)bitachonjudaica\\.com$/.test(location.hostname)?"":"https:
 </head>
 <body>\n
 <div class="shabbos-notice" data-persistent-notice role="note" aria-label="Shabbos and Yom Tov observance">OUR SHOP IS CLOSED FOR SHABBOS AND YOM TOV. PLEASE VISIT US AGAIN AFTERWARD.</div>
-<div class="local-zmanim-notice" role="region" aria-label="Local Shabbos and Yom Tov times" style="padding:7px 16px;background:#FAF9F4;color:#26303C;font-family:Jost,sans-serif;font-size:13px;line-height:1.5;border-bottom:1px solid #B8923D">
+<div class="local-zmanim-notice" role="region" aria-label="Local Shabbos and Yom Tov times" style="padding:9px 16px;background:#eef4fb;color:#26303C;font-family:Jost,sans-serif;font-size:15px;line-height:1.5;text-align:center;border-bottom:1px solid #B8923D">
   <span>Please check <a href="https://www.myzmanim.com/" target="_blank" rel="noopener" style="color:#2B5C99;text-decoration:underline;text-underline-offset:3px">MyZmanim.com</a> for Shabbos and Yom Tov times.</span>
 </div>
 <header>
