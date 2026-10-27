@@ -28,10 +28,7 @@ window.BJ_API=/(^|\\.)bitachonjudaica\\.com$/.test(location.hostname)?"":"https:
 <body>\n
 <div class="shabbos-notice" data-persistent-notice role="note" aria-label="Shabbos and Yom Tov observance">OUR SHOP IS CLOSED FOR SHABBOS AND YOM TOV. PLEASE VISIT US AGAIN AFTERWARD.</div>
 <div class="local-zmanim-notice" role="region" aria-label="Local Shabbos and Yom Tov times" style="padding:7px 16px;background:#FAF9F4;color:#26303C;font-family:Jost,sans-serif;font-size:13px;line-height:1.5;border-bottom:1px solid #B8923D">
-  <form action="https://www.myzmanim.com/day.aspx" method="get" target="_blank" rel="noopener" onsubmit="this.elements.vars.value='US'+this.elements.zip.value;this.elements.zip.disabled=true;setTimeout(function(){{document.getElementById('zmanim-zip').disabled=false}},0)" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px 8px;max-width:1100px;margin:0 auto">
-    <span>Please check <button type="submit" aria-label="Look up this ZIP code at MyZmanim.com (opens in a new tab)" style="padding:0;margin:0;border:0;background:transparent;color:#2B5C99;font:inherit;text-decoration:underline;text-underline-offset:3px;cursor:pointer">MyZmanim.com</button> for Shabbos and Yom Tov times.</span>
-    <span style="display:inline-flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:7px"><label for="zmanim-zip">ZIP code</label><input id="zmanim-zip" name="zip" type="text" inputmode="numeric" autocomplete="postal-code" pattern="[0-9]{{5}}" minlength="5" maxlength="5" placeholder="e.g. 10001" required aria-label="Five-digit U.S. ZIP code" style="box-sizing:border-box;width:105px;min-width:0;height:32px;padding:4px 8px;margin:0;border:1px solid #9cb4cf;border-radius:4px;background:#eef4fb;color:#26303C;font:inherit"><input type="hidden" name="vars" value=""></span>
-  </form>
+  <span>Please check <a href="https://www.myzmanim.com/" target="_blank" rel="noopener" style="color:#2B5C99;text-decoration:underline;text-underline-offset:3px">MyZmanim.com</a> for Shabbos and Yom Tov times.</span>
 </div>
 <header>
   <div class="topbar">
