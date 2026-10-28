@@ -128,7 +128,56 @@ home = """
         .moderntribe-banner a,.moderntribe-banner img{display:block;width:100%;height:auto}
         .moderntribe-banner figcaption{font-size:12px;line-height:1.5;margin-top:8px;color:#626b75}
         @media(max-width:720px){.moderntribe-discovery{grid-template-columns:minmax(0,1fr);gap:0}.moderntribe-banner{margin-top:0}}
+        .featured-gift{display:grid;grid-template-columns:312px minmax(0,1fr);gap:28px;align-items:center;background:#fff;border:1px solid #dce1e7;border-radius:10px;padding:24px;max-width:1040px;margin:24px auto;text-align:left}
+        .featured-gift-media{display:flex;justify-content:center;gap:12px;min-width:0}
+        .featured-gift-media figure{margin:0;min-width:0}
+        .featured-gift-media figcaption{font-size:13px;line-height:1.5;text-align:center;color:#626b75;margin-top:6px}
+        .featured-gift img{display:block;width:150px;max-width:100%;height:auto;object-fit:contain}
+        .featured-gift .featured-gift-label{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#2B5C99;margin:0 0 8px}
+        .featured-gift h4{font-family:"Playfair Display",Georgia,serif;font-size:25px;line-height:1.3;font-weight:500;color:#2B5C99;margin:0 0 10px}
+        .featured-gift .featured-gift-description{font-size:16px;line-height:1.6;margin:0 0 16px;color:#26303C}
+        .featured-gift-link{display:inline-flex;align-items:center;gap:12px;border:1px solid #2B5C99;border-radius:8px;padding:12px 18px;background:#2B5C99;color:#fff;font-size:16px;line-height:1.4}
+        .featured-gift-link:hover{background:#244d80}
+        .featured-gift .featured-gift-note{font-size:12px;line-height:1.5;color:#626b75;margin:10px 0 0}
+        @media(max-width:820px){.featured-gift{grid-template-columns:minmax(0,1fr);gap:18px;padding:20px;max-width:440px}.featured-gift img{margin:auto}.featured-gift h4{font-size:23px}}
       </style>
+      <article class="featured-gift" aria-labelledby="featured-lamp-title">
+        <div class="featured-gift-media">
+          <figure>
+            <a class="featured-gift-artwork" href="https://kosher-innovations.com/kosherlamp360/?wpam_id=8" target="_blank" rel="sponsored nofollow external noopener" aria-label="View KosherLamp 360 colors at Kosher Innovations (affiliate link)">
+              <img src="https://kosher-innovations.com/wp-content/uploads/2024/01/360_pink-150x150.jpg" width="150" height="150" alt="KosherLamp 360 in pink" loading="lazy" decoding="async">
+            </a>
+            <figcaption>Pink</figcaption>
+          </figure>
+          <figure>
+            <a class="featured-gift-artwork" href="https://kosher-innovations.com/kosherlamp360/?wpam_id=8" target="_blank" rel="sponsored nofollow external noopener" aria-label="Explore KosherLamp 360 at Kosher Innovations (affiliate link)">
+              <img src="https://kosher-innovations.com/wp-content/uploads/2024/01/360_SkyBlue-150x150.jpg" width="150" height="150" alt="KosherLamp 360 in sky blue" loading="lazy" decoding="async">
+            </a>
+            <figcaption>Sky blue</figcaption>
+          </figure>
+        </div>
+        <div>
+          <p class="featured-gift-label">A gift for home and travel</p>
+          <h4 id="featured-lamp-title">KosherLamp&reg; 360 brand Shabbos Lamp</h4>
+          <p class="featured-gift-description">A compact Shabbos lamp for a bedside table or trips away. Explore colors, product details, and rabbinical approvals on the manufacturer's page.</p>
+          <a class="featured-gift-link" href="https://kosher-innovations.com/kosherlamp360/?wpam_id=8" target="_blank" rel="sponsored nofollow external noopener">View lamp and colors <span aria-hidden="true">&#8599;</span></a>
+          <p class="featured-gift-note">See current price and availability at Kosher Innovations. Affiliate link. We may earn a commission on qualifying purchases.</p>
+        </div>
+      </article>
+      <article class="featured-gift" aria-labelledby="featured-toothbrush-title">
+        <div class="featured-gift-media">
+        <a class="featured-gift-artwork" href="https://kosher-innovations.com/toothbrush/?wpam_id=8" target="_blank" rel="sponsored nofollow external noopener" aria-label="View Shabbos toothbrushes at Kosher Innovations (affiliate link)">
+          <img src="https://kosher-innovations.com/wp-content/uploads/2023/06/Toothbrush_2-150x150.png" width="150" height="150" alt="Kosher Innovations Shabbos toothbrushes" loading="lazy" decoding="async">
+        </a>
+        </div>
+        <div>
+          <p class="featured-gift-label">A practical Shabbos essential</p>
+          <h4 id="featured-toothbrush-title">Shabbos Toothbrush</h4>
+          <p class="featured-gift-description">A separate toothbrush designed for Shabbos. Explore single and 4-pack options, use instructions, and rabbinical approvals on the manufacturer's page. Contains latex.</p>
+          <a class="featured-gift-link" href="https://kosher-innovations.com/toothbrush/?wpam_id=8" target="_blank" rel="sponsored nofollow external noopener">View Shabbos toothbrushes <span aria-hidden="true">&#8599;</span></a>
+          <p class="featured-gift-note">See current price and availability at Kosher Innovations. Affiliate link. We may earn a commission on qualifying purchases.</p>
+        </div>
+      </article>
       <div class="moderntribe-discovery">
       <nav class="gift-buttons" aria-label="More Jewish gift shops">
         <a href="https://www.judaicawebstore.com/" target="_blank" rel="external noopener">Judaica WebStore <span aria-hidden="true">&#8599;</span></a>
