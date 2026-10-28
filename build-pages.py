@@ -135,6 +135,7 @@ home = """
         <a href="https://www.hasofer.com/" target="_blank" rel="external noopener"><span>HaSOFER<small style="display:block;font-size:12px;line-height:1.5;margin-top:4px">Judaica, silver gifts, tallitot, tefillin, and mezuzot</small></span><span aria-hidden="true">&#8599;</span></a>
         <a href="https://israelicenterofjudaica.com/" target="_blank" rel="external noopener">Israel Center of Judaica <span aria-hidden="true">&#8599;</span></a>
         <a href="https://judaica.city/" target="_blank" rel="external noopener"><span>Judaica.city<small style="display:block;font-size:12px;line-height:1.5;margin-top:4px">Custom kippahs, challah covers, and Kiddush essentials</small></span><span aria-hidden="true">&#8599;</span></a>
+        <a href="https://www.barbarashawgifts.com/" target="_blank" rel="external noopener">Barbara Shaw Gifts <span aria-hidden="true">&#8599;</span></a>
         <a href="https://www.israel-catalog.com/" target="_blank" rel="external noopener">Israel-Catalog <span aria-hidden="true">&#8599;</span></a>
 
         <a href="https://www.judaica.com/" target="_blank" rel="external noopener"><span>Judaica.com<small style="display:block;font-size:12px;line-height:1.5;margin-top:4px">Jewish gifts, Shabbat essentials, and home decor</small></span><span aria-hidden="true">&#8599;</span></a>
