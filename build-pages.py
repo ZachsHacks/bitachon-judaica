@@ -112,6 +112,11 @@ home = """
       <a href="https://www.amazon.com/s?k=jewish+gifts&amp;tag=bitachonjudai-20" target="_blank" rel="sponsored external noopener">Jewish Gifts <span aria-hidden="true">&#8599;</span></a>
     </nav>
     <h3 class="gift-retailer-heading">Shop gifts on Amazon</h3>
+    <nav class="gift-buttons" aria-label="Featured Amazon product">
+      <a href="https://www.amazon.com/dp/B0FV3MYNJN?&amp;linkCode=ll2&amp;tag=bitachonjudai-20&amp;linkId=aed4c3a89ac3d2c519270dbeb2193af1&amp;language=en_US&amp;gaOptInStatus=true&amp;ref_=as_li_ss_tl" target="_blank" rel="sponsored external noopener"><span>SURI Glass Kiddush Cup Set<small style="display:block;font-size:13px;line-height:1.5;margin-top:6px">Glass Kiddush cup with matching base. View on Amazon.</small></span><span aria-hidden="true">&#8599;</span></a>
+    </nav>
+    <p class="gift-shopping-note">This featured product is an Amazon affiliate recommendation. Purchase on Amazon; it is not sold or fulfilled by Bitachon Judaica. As an Amazon Associate I earn from qualifying purchases.</p>
+
 
     <nav class="gift-buttons" aria-label="Explore gifts on Etsy">
       <a href="https://www.etsy.com/market/unique_gifts?max=25" target="_blank" rel="external noopener">Unique Gifts Under $25 <span aria-hidden="true">&#8599;</span></a>
